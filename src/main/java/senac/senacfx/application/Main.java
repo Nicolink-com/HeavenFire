@@ -20,6 +20,7 @@ public class Main extends Application {
 
             //macete para a barra de cima ficar ate o fim da tela
             scrollPane.setFitToHeight(true);
+            
             scrollPane.setFitToWidth(true);
 
             mainScene = new Scene(scrollPane);
