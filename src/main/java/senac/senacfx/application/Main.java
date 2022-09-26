@@ -33,9 +33,6 @@ public class Main extends Application {
         }
     }
 
-    private Utils getClass() {
-        return null;
-    }
 
     public static Scene getMainScene(){
         return mainScene;
@@ -44,3 +41,4 @@ public class Main extends Application {
         launch(args);
     }
 }
+//o
