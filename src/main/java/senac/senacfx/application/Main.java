@@ -32,8 +32,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-
-
+    
     public static Scene getMainScene(){
         return mainScene;
     }
