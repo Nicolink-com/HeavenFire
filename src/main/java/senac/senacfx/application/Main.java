@@ -1,6 +1,5 @@
 package senac.senacfx.application;
 
-import com.sun.javafx.scene.control.skin.Utils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -33,9 +32,12 @@ public class Main extends Application {
         }
     }
 
+<<<<<<< Updated upstream
 
 
 
+=======
+>>>>>>> Stashed changes
     public static Scene getMainScene(){
         return mainScene;
     }
