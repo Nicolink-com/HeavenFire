@@ -3,7 +3,7 @@ package senac.senacfx.model.entities;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Seller implements Serializable {
+public class Classe implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer id;
     private String name;
@@ -11,18 +11,18 @@ public class Seller implements Serializable {
     private Date birthDate;
     private Double baseSalary;
 
-    private Department department;
+    private Raca raca;
 
-    public Seller() {
+    public Classe() {
     }
 
-    public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary, Department department) {
+    public Classe(Integer id, String name, String email, Date birthDate, Double baseSalary, Raca raca) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
         this.baseSalary = baseSalary;
-        this.department = department;
+        this.raca = raca;
     }
 
     public Integer getId() {
@@ -65,12 +65,12 @@ public class Seller implements Serializable {
         this.baseSalary = baseSalary;
     }
 
-    public Department getDepartment() {
-        return department;
+    public Raca getDepartment() {
+        return raca;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setDepartment(Raca raca) {
+        this.raca = raca;
     }
 
     @Override
@@ -81,7 +81,7 @@ public class Seller implements Serializable {
             return false;
         if (getClass() != o.getClass())
             return false;
-        Seller other = (Seller) o;
+        Classe other = (Classe) o;
         if (id == null){
             if (other.id != null)
                 return false;
@@ -101,13 +101,13 @@ public class Seller implements Serializable {
 
     @Override
     public String toString() {
-        return "Seller{" +
+        return "Classe{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", birthDate=" + birthDate +
                 ", baseSalary=" + baseSalary +
-                ", department=" + department +
+                ", raca=" + raca +
                 '}';
     }
 }

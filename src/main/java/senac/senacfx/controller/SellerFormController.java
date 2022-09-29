@@ -12,8 +12,8 @@ import senac.senacfx.gui.listeners.DataChangeListener;
 import senac.senacfx.gui.util.Alerts;
 import senac.senacfx.gui.util.Constraints;
 import senac.senacfx.gui.util.Utils;
-import senac.senacfx.model.entities.Department;
-import senac.senacfx.model.entities.Seller;
+import senac.senacfx.model.entities.Classe;
+import senac.senacfx.model.entities.Raca;
 import senac.senacfx.model.exceptions.ValidationException;
 import senac.senacfx.model.services.DepartmentService;
 import senac.senacfx.model.services.SellerService;
@@ -26,7 +26,7 @@ import java.util.*;
 
 public class SellerFormController implements Initializable {
 
-    private Seller entity;
+    private Classe entity;
 
     private SellerService service;
 
@@ -50,7 +50,7 @@ public class SellerFormController implements Initializable {
     private TextField txtBaseSalary;
 
     @FXML
-    private ComboBox<Department> comboBoxDepartment;
+    private ComboBox<Raca> comboBoxDepartment;
     @FXML
     private Label labelErrorName;
 
@@ -69,10 +69,10 @@ public class SellerFormController implements Initializable {
     @FXML
     private Button btCancel;
 
-    private ObservableList<Department> obsList;
+    private ObservableList<Raca> obsList;
 
     //Contolador agora tem uma instancia do departamento
-    public void setSeller(Seller entity){
+    public void setSeller(Classe entity){
         this.entity = entity;
     }
 
@@ -113,8 +113,8 @@ public class SellerFormController implements Initializable {
         }
     }
 
-    private Seller getFormData() {
-        Seller obj = new Seller();
+    private Classe getFormData() {
+        Classe obj = new Classe();
 
         ValidationException exception = new ValidationException("Erro na validacao");
 
@@ -205,7 +205,7 @@ public class SellerFormController implements Initializable {
             throw new IllegalStateException("DepartmentService was null");
         }
 
-        List<Department> list = departmentService.findAll();
+        List<Raca> list = departmentService.findAll();
         obsList = FXCollections.observableArrayList(list);
         comboBoxDepartment.setItems(obsList);
     }
@@ -222,9 +222,9 @@ public class SellerFormController implements Initializable {
     }
 
     private void initializeComboBoxDepartment() {
-        Callback<ListView<Department>, ListCell<Department>> factory = lv -> new ListCell<Department>() {
+        Callback<ListView<Raca>, ListCell<Raca>> factory = lv -> new ListCell<Raca>() {
             @Override
-            protected void updateItem(Department item, boolean empty) {
+            protected void updateItem(Raca item, boolean empty) {
                 super.updateItem(item, empty);
                 setText(empty ? "" : item.getName());
             }

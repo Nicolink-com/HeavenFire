@@ -15,11 +15,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import senac.senacfx.application.Main;
 import senac.senacfx.db.DbException;
-import senac.senacfx.db.DbIntegrityException;
 import senac.senacfx.gui.listeners.DataChangeListener;
 import senac.senacfx.gui.util.Alerts;
 import senac.senacfx.gui.util.Utils;
-import senac.senacfx.model.entities.Department;
+import senac.senacfx.model.entities.Raca;
 import senac.senacfx.model.services.DepartmentService;
 
 import java.io.IOException;
@@ -34,29 +33,29 @@ public class DepartmentListController implements Initializable, DataChangeListen
     private DepartmentService service;
 
     @FXML
-    private TableView<Department> tableViewDepartment;
+    private TableView<Raca> tableViewDepartment;
 
     @FXML
-    private TableColumn<Department, Integer> tableColumnId;
+    private TableColumn<Raca, Integer> tableColumnId;
 
     @FXML
-    private TableColumn<Department, String> tableColumnName;
+    private TableColumn<Raca, String> tableColumnName;
 
     @FXML
-    private TableColumn<Department, Department> tableColumnEDIT;
+    private TableColumn<Raca, Raca> tableColumnEDIT;
 
     @FXML
-    private TableColumn<Department, Department> tableColumnREMOVE;
+    private TableColumn<Raca, Raca> tableColumnREMOVE;
 
     @FXML
     private Button btNew;
 
-    private ObservableList<Department> obsList;
+    private ObservableList<Raca> obsList;
 
     @FXML
     public void onBtNewAction(ActionEvent event){
         Stage parentStage = Utils.currentStage(event);
-        Department obj = new Department();
+        Raca obj = new Raca();
         createDialogForm(obj,"/gui/DepartmentForm.fxml", parentStage);
     }
 
@@ -85,14 +84,14 @@ public class DepartmentListController implements Initializable, DataChangeListen
         if (service == null){
             throw new IllegalStateException("Service is null!");
         }
-        List<Department> list = service.findAll();
+        List<Raca> list = service.findAll();
         obsList = FXCollections.observableArrayList(list);
         tableViewDepartment.setItems(obsList);
         initEditButtons();
         initRemoveButtons();
     }
 
-    private void createDialogForm(Department obj, String absoluteName, Stage parentStage){
+    private void createDialogForm(Raca obj, String absoluteName, Stage parentStage){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
             Pane pane = loader.load();
@@ -124,10 +123,10 @@ public class DepartmentListController implements Initializable, DataChangeListen
 
     private void initEditButtons() {
         tableColumnEDIT.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
-        tableColumnEDIT.setCellFactory(param -> new TableCell<Department, Department>() {
+        tableColumnEDIT.setCellFactory(param -> new TableCell<Raca, Raca>() {
             private final Button button = new Button("Editar");
             @Override
-            protected void updateItem(Department obj, boolean empty) {
+            protected void updateItem(Raca obj, boolean empty) {
                 super.updateItem(obj, empty);
                 if (obj == null) {
                     setGraphic(null);
@@ -143,11 +142,11 @@ public class DepartmentListController implements Initializable, DataChangeListen
 
     private void initRemoveButtons() {
         tableColumnREMOVE.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
-        tableColumnREMOVE.setCellFactory(param -> new TableCell<Department, Department>() {
+        tableColumnREMOVE.setCellFactory(param -> new TableCell<Raca, Raca>() {
             private final Button button = new Button("Remover");
 
             @Override
-            protected void updateItem(Department obj, boolean empty) {
+            protected void updateItem(Raca obj, boolean empty) {
                 super.updateItem(obj, empty);
                 if (obj == null) {
                     setGraphic(null);
@@ -159,7 +158,7 @@ public class DepartmentListController implements Initializable, DataChangeListen
         });
     }
 
-    private void removeEntity(Department obj) {
+    private void removeEntity(Raca obj) {
         Optional<ButtonType> result = Alerts.showConfirmation("Confirmation", "Confirma que quer deletar?");
 
         if (result.get() == ButtonType.OK){

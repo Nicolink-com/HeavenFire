@@ -1,18 +1,18 @@
 package senac.senacfx.model.dao;
 
-import senac.senacfx.model.entities.Department;
-import senac.senacfx.model.entities.Seller;
+import senac.senacfx.model.entities.Raca;
+import senac.senacfx.model.entities.Classe;
 import java.util.List;
 
 public interface SellerDao {
 
-    void insert(Seller obj);
-    void update(Seller obj);
+    void insert(Classe obj);
+    void update(Classe obj);
 
 
     void deleteById(Integer id);
-    Seller findById(Integer id);
-    List<Seller> findAll();
-    List<Seller> findByDepartment(Department department);
+    Classe findById(Integer id);
+    List<Classe> findAll();
+    List<Classe> findByDepartment(Raca raca);
 
 }

@@ -2,16 +2,16 @@ package senac.senacfx.model.entities;
 
 import java.io.Serializable;
 
-public class Department implements Serializable {
+public class Raca implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private Integer id;
     private String name;
 
-    public Department() {
+    public Raca() {
     }
 
-    public Department(Integer id, String name) {
+    public Raca(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -40,7 +40,7 @@ public class Department implements Serializable {
             return false;
         if (getClass() != o.getClass())
             return false;
-        Department other = (Department) o;
+        Raca other = (Raca) o;
         if (id == null){
             if (other.id != null)
                 return false;
@@ -60,7 +60,7 @@ public class Department implements Serializable {
 
     @Override
     public String toString() {
-        return "Department{" +
+        return "Raca{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

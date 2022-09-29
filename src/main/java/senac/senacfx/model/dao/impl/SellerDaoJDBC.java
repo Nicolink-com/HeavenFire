@@ -3,8 +3,8 @@ package senac.senacfx.model.dao.impl;
 import senac.senacfx.db.DB;
 import senac.senacfx.db.DbException;
 import senac.senacfx.model.dao.SellerDao;
-import senac.senacfx.model.entities.Department;
-import senac.senacfx.model.entities.Seller;
+import senac.senacfx.model.entities.Classe;
+import senac.senacfx.model.entities.Raca;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class SellerDaoJDBC implements SellerDao {
     }
 
     @Override
-    public void insert(Seller obj) {
+    public void insert(Classe obj) {
         PreparedStatement st = null;
         try{
             st = conn.prepareStatement(
@@ -56,7 +56,7 @@ public class SellerDaoJDBC implements SellerDao {
     }
 
     @Override
-    public void update(Seller obj) {
+    public void update(Classe obj) {
         PreparedStatement st = null;
         try{
             st = conn.prepareStatement(
@@ -102,7 +102,7 @@ public class SellerDaoJDBC implements SellerDao {
     }
 
     @Override
-    public Seller findById(Integer id) {
+    public Classe findById(Integer id) {
         PreparedStatement st = null;
         ResultSet rs = null;
         try{
@@ -115,8 +115,8 @@ public class SellerDaoJDBC implements SellerDao {
             st.setInt(1, id);
             rs = st.executeQuery();
             if (rs.next()){
-                Department dep = instantiateDepartment(rs);
-                Seller obj = instantiateSeller(rs, dep);
+                Raca dep = instantiateDepartment(rs);
+                Classe obj = instantiateSeller(rs, dep);
                 return obj;
 
             }
@@ -129,15 +129,15 @@ public class SellerDaoJDBC implements SellerDao {
         }
     }
 
-    private Department instantiateDepartment(ResultSet rs) throws SQLException {
-        Department dep = new Department();
+    private Raca instantiateDepartment(ResultSet rs) throws SQLException {
+        Raca dep = new Raca();
         dep.setId(rs.getInt("DepartmentId"));
         dep.setName(rs.getString("DepName"));
         return dep;
     }
 
-    private Seller instantiateSeller(ResultSet rs, Department dep) throws SQLException{
-        Seller obj = new Seller();
+    private Classe instantiateSeller(ResultSet rs, Raca dep) throws SQLException{
+        Classe obj = new Classe();
         obj.setId(rs.getInt("Id"));
         obj.setName(rs.getString("Name"));
         obj.setEmail(rs.getString("Email"));
@@ -147,7 +147,7 @@ public class SellerDaoJDBC implements SellerDao {
         return obj;
     }
     @Override
-    public List<Seller> findAll() {
+    public List<Classe> findAll() {
         PreparedStatement st = null;
         ResultSet rs = null;
         try{
@@ -159,19 +159,19 @@ public class SellerDaoJDBC implements SellerDao {
 
             rs = st.executeQuery();
 
-            List<Seller> list = new ArrayList<>();
-            Map<Integer, Department> map = new HashMap<>();
+            List<Classe> list = new ArrayList<>();
+            Map<Integer, Raca> map = new HashMap<>();
 
             while (rs.next()){
 
-                Department dep = map.get(rs.getInt("DepartmentId"));
+                Raca dep = map.get(rs.getInt("DepartmentId"));
 
                 if (dep == null){
                     dep = instantiateDepartment(rs);
                     map.put(rs.getInt("DepartmentId"), dep);
                 }
 
-                Seller obj = instantiateSeller(rs, dep);
+                Classe obj = instantiateSeller(rs, dep);
                 list.add(obj);
             }
             return list;
@@ -184,34 +184,34 @@ public class SellerDaoJDBC implements SellerDao {
     }
 
     @Override
-    public List<Seller> findByDepartment(Department department) {
+    public List<Classe> findByDepartment(Raca raca) {
         PreparedStatement st = null;
         ResultSet rs = null;
         try{
             st = conn.prepareStatement("" +
-                    "select seller.*, department.Name as DepName " +
-                    "from seller inner join department " +
-                    "on seller.DepartmentId = department.Id " +
+                    "select seller.*, raca.Name as DepName " +
+                    "from seller inner join raca " +
+                    "on seller.DepartmentId = raca.Id " +
                     "where DepartmentId = ? " +
                     "order by Name");
 
-            st.setInt(1, department.getId());
+            st.setInt(1, raca.getId());
 
             rs = st.executeQuery();
 
-            List<Seller> list = new ArrayList<>();
-            Map<Integer, Department> map = new HashMap<>();
+            List<Classe> list = new ArrayList<>();
+            Map<Integer, Raca> map = new HashMap<>();
 
             while (rs.next()){
 
-                Department dep = map.get(rs.getInt("DepartmentId"));
+                Raca dep = map.get(rs.getInt("DepartmentId"));
 
                 if (dep == null){
                     dep = instantiateDepartment(rs);
                     map.put(rs.getInt("DepartmentId"), dep);
                 }
 
-                Seller obj = instantiateSeller(rs, dep);
+                Classe obj = instantiateSeller(rs, dep);
                 list.add(obj);
             }
             return list;

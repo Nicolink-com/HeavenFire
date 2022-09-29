@@ -2,17 +2,17 @@ package senac.senacfx.model.entities;
 
 import java.io.Serializable;
 
-public class Person implements Serializable {
+public class Personagem implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private Integer id;
     private String name;
     private String email;
 
-    public Person() {
+    public Personagem() {
     }
 
-    public Person(Integer id, String name, String email) {
+    public Personagem(Integer id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -44,7 +44,7 @@ public class Person implements Serializable {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "Personagem{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +

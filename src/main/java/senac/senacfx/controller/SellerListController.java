@@ -18,7 +18,7 @@ import senac.senacfx.db.DbException;
 import senac.senacfx.gui.listeners.DataChangeListener;
 import senac.senacfx.gui.util.Alerts;
 import senac.senacfx.gui.util.Utils;
-import senac.senacfx.model.entities.Seller;
+import senac.senacfx.model.entities.Classe;
 import senac.senacfx.model.services.DepartmentService;
 import senac.senacfx.model.services.SellerService;
 
@@ -35,38 +35,38 @@ public class SellerListController implements Initializable, DataChangeListener {
     private SellerService service;
 
     @FXML
-    private TableView<Seller> tableViewSeller;
+    private TableView<Classe> tableViewSeller;
 
     @FXML
-    private TableColumn<Seller, Integer> tableColumnId;
+    private TableColumn<Classe, Integer> tableColumnId;
 
     @FXML
-    private TableColumn<Seller, String> tableColumnName;
+    private TableColumn<Classe, String> tableColumnName;
 
     @FXML
-    private TableColumn<Seller, String> tableColumnEmail;
+    private TableColumn<Classe, String> tableColumnEmail;
 
     @FXML
-    private TableColumn<Seller, Date> tableColumnBirthDate;
+    private TableColumn<Classe, Date> tableColumnBirthDate;
 
     @FXML
-    private TableColumn<Seller, Double> tableColumnBaseSalary;
+    private TableColumn<Classe, Double> tableColumnBaseSalary;
 
     @FXML
-    private TableColumn<Seller, Seller> tableColumnEDIT;
+    private TableColumn<Classe, Classe> tableColumnEDIT;
 
     @FXML
-    private TableColumn<Seller, Seller> tableColumnREMOVE;
+    private TableColumn<Classe, Classe> tableColumnREMOVE;
 
     @FXML
     private Button btNew;
 
-    private ObservableList<Seller> obsList;
+    private ObservableList<Classe> obsList;
 
     @FXML
     public void onBtNewAction(ActionEvent event){
         Stage parentStage = Utils.currentStage(event);
-        Seller obj = new Seller();
+        Classe obj = new Classe();
         createDialogForm(obj,"/gui/SellerForm.fxml", parentStage);
     }
 
@@ -101,14 +101,14 @@ public class SellerListController implements Initializable, DataChangeListener {
         if (service == null){
             throw new IllegalStateException("Service is null!");
         }
-        List<Seller> list = service.findAll();
+        List<Classe> list = service.findAll();
         obsList = FXCollections.observableArrayList(list);
         tableViewSeller.setItems(obsList);
         initEditButtons();
         initRemoveButtons();
     }
 
-    private void createDialogForm(Seller obj, String absoluteName, Stage parentStage){
+    private void createDialogForm(Classe obj, String absoluteName, Stage parentStage){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
             Pane pane = loader.load();
@@ -141,10 +141,10 @@ public class SellerListController implements Initializable, DataChangeListener {
 
     private void initEditButtons() {
         tableColumnEDIT.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
-        tableColumnEDIT.setCellFactory(param -> new TableCell<Seller, Seller>() {
+        tableColumnEDIT.setCellFactory(param -> new TableCell<Classe, Classe>() {
             private final Button button = new Button("Editar");
             @Override
-            protected void updateItem(Seller obj, boolean empty) {
+            protected void updateItem(Classe obj, boolean empty) {
                 super.updateItem(obj, empty);
                 if (obj == null) {
                     setGraphic(null);
@@ -160,11 +160,11 @@ public class SellerListController implements Initializable, DataChangeListener {
 
     private void initRemoveButtons() {
         tableColumnREMOVE.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
-        tableColumnREMOVE.setCellFactory(param -> new TableCell<Seller, Seller>() {
+        tableColumnREMOVE.setCellFactory(param -> new TableCell<Classe, Classe>() {
             private final Button button = new Button("Remover");
 
             @Override
-            protected void updateItem(Seller obj, boolean empty) {
+            protected void updateItem(Classe obj, boolean empty) {
                 super.updateItem(obj, empty);
                 if (obj == null) {
                     setGraphic(null);
@@ -176,7 +176,7 @@ public class SellerListController implements Initializable, DataChangeListener {
         });
     }
 
-    private void removeEntity(Seller obj) {
+    private void removeEntity(Classe obj) {
         Optional<ButtonType> result = Alerts.showConfirmation("Confirmation", "Confirma que quer deletar?");
 
         if (result.get() == ButtonType.OK){

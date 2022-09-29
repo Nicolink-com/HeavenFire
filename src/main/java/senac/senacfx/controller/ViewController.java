@@ -1,6 +1,5 @@
 package senac.senacfx.controller;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,7 +8,7 @@ import javafx.scene.control.*;
 import javafx.util.Callback;
 import senac.senacfx.gui.util.Alerts;
 import senac.senacfx.gui.util.Constraints;
-import senac.senacfx.model.entities.Person;
+import senac.senacfx.model.entities.Personagem;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -20,21 +19,21 @@ import java.util.ResourceBundle;
 public class ViewController implements Initializable {
 
     @FXML
-    private ComboBox<Person> combo1;
+    private ComboBox<Personagem> combo1;
 
     @FXML
     private Button btAll;
 
-    private ObservableList<Person> obsList;
+    private ObservableList<Personagem> obsList;
     @FXML
     public void onComboBoxPersonAction() {
-        Person person = combo1.getSelectionModel().getSelectedItem();
-        System.out.println(person);
+        Personagem personagem = combo1.getSelectionModel().getSelectedItem();
+        System.out.println(personagem);
     }
     @FXML
     public void onBtAllAction() {
-        for(Person person : combo1.getItems()){
-            System.out.println(person);
+        for(Personagem personagem : combo1.getItems()){
+            System.out.println(personagem);
         }
     }
 
@@ -69,17 +68,17 @@ public class ViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Person> list = new ArrayList<>();
-        list.add(new Person(1, "Maria", "vidaloka12@gmail.com"));
-        list.add(new Person(2, "John", "snow@gmail.com"));
-        list.add(new Person(3, "Marcos", "marcoveio@gmail.com"));
+        List<Personagem> list = new ArrayList<>();
+        list.add(new Personagem(1, "Maria", "vidaloka12@gmail.com"));
+        list.add(new Personagem(2, "John", "snow@gmail.com"));
+        list.add(new Personagem(3, "Marcos", "marcoveio@gmail.com"));
 
         obsList = FXCollections.observableArrayList(list);
         combo1.setItems(obsList);
 
-        Callback<ListView<Person>, ListCell<Person>> factory = lv -> new ListCell<Person>() {
+        Callback<ListView<Personagem>, ListCell<Personagem>> factory = lv -> new ListCell<Personagem>() {
             @Override
-            protected void updateItem(Person item, boolean empty) {
+            protected void updateItem(Personagem item, boolean empty) {
                 super.updateItem(item, empty);
                 setText(empty ? "" : item.getName());
             }

@@ -3,7 +3,7 @@ package senac.senacfx.model.dao.impl;
 import senac.senacfx.db.DB;
 import senac.senacfx.db.DbException;
 import senac.senacfx.model.dao.DepartmentDao;
-import senac.senacfx.model.entities.Department;
+import senac.senacfx.model.entities.Raca;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
     }
 
     @Override
-    public void insert(Department obj) {
+    public void insert(Raca obj) {
         PreparedStatement st = null;
         try {
             st = conn.prepareStatement("insert into department " +
@@ -50,7 +50,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
     }
 
     @Override
-    public void update(Department obj) {
+    public void update(Raca obj) {
 
         PreparedStatement st = null;
         try {
@@ -96,7 +96,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
     }
 
     @Override
-    public Department findById(Integer id) {
+    public Raca findById(Integer id) {
 
         PreparedStatement st = null;
         ResultSet rs = null;
@@ -108,7 +108,7 @@ public class DepartmentDaoJDBC implements DepartmentDao {
             st.setInt(1, id);
             rs = st.executeQuery();
             if (rs.next()){
-                Department dep = instantiateDepartment(rs);
+                Raca dep = instantiateDepartment(rs);
                 return dep;
 
             }
@@ -122,15 +122,15 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
     }
 
-    private Department instantiateDepartment(ResultSet rs) throws SQLException {
-        Department dep = new Department();
+    private Raca instantiateDepartment(ResultSet rs) throws SQLException {
+        Raca dep = new Raca();
         dep.setId(rs.getInt("Id"));
         dep.setName(rs.getString("Name"));
         return dep;
     }
 
     @Override
-    public List<Department> findAll() {
+    public List<Raca> findAll() {
 
         PreparedStatement st = null;
         ResultSet rs = null;
@@ -141,12 +141,12 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
             rs = st.executeQuery();
 
-            List<Department> list = new ArrayList<>();
-            Map<Integer, Department> map = new HashMap<>();
+            List<Raca> list = new ArrayList<>();
+            Map<Integer, Raca> map = new HashMap<>();
 
             while (rs.next()){
 
-                Department dep = map.get(rs.getInt("Id"));
+                Raca dep = map.get(rs.getInt("Id"));
 
                 if (dep == null){
                     dep = instantiateDepartment(rs);
