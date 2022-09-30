@@ -4,7 +4,7 @@ import senac.senacfx.model.entities.Raca;
 
 import java.util.List;
 
-public interface DepartmentDao {
+public interface RacaDao {
 
     void insert(Raca obj);
     void update(Raca obj);

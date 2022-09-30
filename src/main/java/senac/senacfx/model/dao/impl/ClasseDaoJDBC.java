@@ -2,7 +2,7 @@ package senac.senacfx.model.dao.impl;
 
 import senac.senacfx.db.DB;
 import senac.senacfx.db.DbException;
-import senac.senacfx.model.dao.SellerDao;
+import senac.senacfx.model.dao.ClasseDao;
 import senac.senacfx.model.entities.Classe;
 import senac.senacfx.model.entities.Raca;
 
@@ -12,10 +12,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SellerDaoJDBC implements SellerDao {
+public class ClasseDaoJDBC implements ClasseDao {
     private Connection conn;
 
-    public SellerDaoJDBC(Connection conn) {
+    public ClasseDaoJDBC(Connection conn) {
         this.conn = conn;
     }
 
@@ -24,15 +24,15 @@ public class SellerDaoJDBC implements SellerDao {
         PreparedStatement st = null;
         try{
             st = conn.prepareStatement(
-                    "insert into seller " +
+                    "insert into raca " +
                             "(Name, Email, BirthDate, BaseSalary, DepartmentId) " +
                             "values (?, ?, ?, ?, ?)",
                     Statement.RETURN_GENERATED_KEYS);
 
-            st.setString(1, obj.getName());
-            st.setString(2, obj.getEmail());
-            st.setDate(3, new Date(obj.getBirthDate().getTime()));
-            st.setDouble(4, obj.getBaseSalary());
+            st.setString(1, obj.getNome());
+            st.setInt(2, obj.getforca());
+            st.setInt(3,  obj.getAgilidade());
+            st.setInt(4, obj.getDestreza());
             st.setInt(5, obj.getDepartment().getId());
 
             int rowsAffected = st.executeUpdate();
@@ -64,10 +64,10 @@ public class SellerDaoJDBC implements SellerDao {
                             "set Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? " +
                             "where id = ?");
 
-            st.setString(1, obj.getName());
-            st.setString(2, obj.getEmail());
-            st.setDate(3, new Date(obj.getBirthDate().getTime()));
-            st.setDouble(4, obj.getBaseSalary());
+            st.setString(1, obj.getNome());
+            st.setInt(2, obj.getforca());
+            st.setInt(3, obj.getAgilidade());
+            st.setInt(4, obj.getDestreza());
             st.setInt(5, obj.getDepartment().getId());
             st.setInt(6, obj.getId());
 
@@ -139,10 +139,10 @@ public class SellerDaoJDBC implements SellerDao {
     private Classe instantiateSeller(ResultSet rs, Raca dep) throws SQLException{
         Classe obj = new Classe();
         obj.setId(rs.getInt("Id"));
-        obj.setName(rs.getString("Name"));
-        obj.setEmail(rs.getString("Email"));
-        obj.setBaseSalary(rs.getDouble("BaseSalary"));
-        obj.setBirthDate(new java.util.Date(rs.getTimestamp("BirthDate").getTime()));
+        obj.setNome(rs.getString("Name"));
+        obj.setforca(rs.getInt("Raca"));
+        obj.setDestreza(rs.getInt("Destreza"));
+        obj.setAgilidade(rs.getInt("Agilidade"));
         obj.setDepartment(dep);
         return obj;
     }

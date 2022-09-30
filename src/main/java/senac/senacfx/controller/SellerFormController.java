@@ -41,13 +41,13 @@ public class SellerFormController implements Initializable {
     private TextField txtName;
 
     @FXML
-    private TextField txtEmail;
+    private TextField txtforca;
 
     @FXML
-    private DatePicker dpBirthDate;
+    private TextField txtAgilidade;
 
     @FXML
-    private TextField txtBaseSalary;
+    private TextField txtDestreza;
 
     @FXML
     private ComboBox<Raca> comboBoxDepartment;
@@ -123,24 +123,19 @@ public class SellerFormController implements Initializable {
         if (txtName.getText() == null || txtName.getText().trim().equals("")){
             exception.addError("name", "campo nao pode ser vazio");
         }
-        obj.setName(txtName.getText());
+        obj.setNome(txtName.getText());
 
-        if (txtEmail.getText() == null || txtEmail.getText().trim().equals("")){
+        if (txtforca.getText() == null || txtforca.getText().trim().equals("")){
             exception.addError("email", "campo nao pode ser vazio");
         }
-        obj.setEmail(txtEmail.getText());
+        obj.setforca(Integer.valueOf(txtforca.getText()));
 
-        if (dpBirthDate.getValue() == null){
-            exception.addError("birthDate", "data nao selecionada");
-        } else {
-            Instant instant = Instant.from(dpBirthDate.getValue().atStartOfDay(ZoneId.systemDefault()));
-            obj.setBirthDate(Date.from(instant));
-        }
+        obj.setAgilidade(Utils.tryParseToInt(txtAgilidade.getText()));
 
-        if (txtBaseSalary.getText() == null || txtBaseSalary.getText().trim().equals("")){
-            exception.addError("baseSalary", "campo nao pode ser vazio");
+        if (txtDestreza.getText() == null || txtDestreza.getText().trim().equals("")){
+            exception.addError("Destreza", "campo nao pode ser vazio");
         }
-        obj.setBaseSalary(Utils.tryParseToDouble(txtBaseSalary.getText()));
+        obj.setDestreza(Utils.tryParseToInt(txtDestreza.getText()));
 
         obj.setDepartment(comboBoxDepartment.getValue());
 
@@ -165,37 +160,24 @@ public class SellerFormController implements Initializable {
     private void initializeNodes() {
         Constraints.setTextFieldInteger(txtId);
         Constraints.setTextFieldMaxLength(txtName, 70);
-        Constraints.setTextFieldDouble(txtBaseSalary);
-        Constraints.setTextFieldMaxLength(txtEmail, 60);
-        Utils.formatDatePicker(dpBirthDate, "dd/MM/yyyy");
+        Constraints.setTextFieldDouble(txtDestreza);
+        Constraints.setTextFieldMaxLength(txtforca, 60);
+        Constraints.setTextFieldInteger(txtAgilidade);
 
         initializeComboBoxDepartment();
 
     }
 
-    public void updateFormData(){
+    public void updateFormData() {
 
-        if (entity == null){
+        if (entity == null) {
             throw new IllegalStateException("Entidade nula");
         }
 
         txtId.setText(String.valueOf(entity.getId()));
-        txtName.setText(entity.getName());
-        txtEmail.setText(entity.getEmail());
-
+        txtName.setText(entity.getNome());
+        txtforca.setText(String.valueOf((entity.getforca())));
         Locale.setDefault(Locale.US);
-
-        if (entity.getBirthDate() != null) {
-            dpBirthDate.setValue(LocalDate.ofInstant(entity.getBirthDate().toInstant(), ZoneId.systemDefault()));
-        }
-
-        txtBaseSalary.setText(String.format("%.2f", entity.getBaseSalary()));
-
-        if (entity.getDepartment() == null) {
-            comboBoxDepartment.getSelectionModel().selectFirst();
-        } else {
-            comboBoxDepartment.setValue(entity.getDepartment());
-        }
 
     }
 
@@ -213,10 +195,10 @@ public class SellerFormController implements Initializable {
     private void setErrorMessages(Map<String, String> errors){
         Set<String> fields = errors.keySet();
 
-        labelErrorName.setText((fields.contains("name") ? errors.get("name") : ""));
-        labelErrorEmail.setText((fields.contains("email") ? errors.get("email") : ""));
-        labelErrorBirthDate.setText((fields.contains("birthDate") ? errors.get("birthDate") : ""));
-        labelErrorBaseSalary.setText((fields.contains("baseSalary") ? errors.get("baseSalary") : ""));
+        labelErrorName.setText((fields.contains("nome") ? errors.get("nome") : ""));
+        labelErrorEmail.setText((fields.contains("forca") ? errors.get("forca") : ""));
+        labelErrorBirthDate.setText((fields.contains("Agilidade") ? errors.get("Agilidade") : ""));
+        labelErrorBaseSalary.setText((fields.contains("Destreza") ? errors.get("Destreza") : ""));
         labelErrorName.getStyleClass().add("button");
 
     }

@@ -4,65 +4,66 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Classe implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private Integer id;
-    private String name;
-    private String email;
-    private Date birthDate;
-    private Double baseSalary;
+    private static final long serialVersionUId = 1L;
+    private Integer Id;
+    private String Nome;
+    private Integer forca;
+    
+    private Integer Agilidade;
+    private Integer Destreza;
 
     private Raca raca;
 
     public Classe() {
     }
 
-    public Classe(Integer id, String name, String email, Date birthDate, Double baseSalary, Raca raca) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.birthDate = birthDate;
-        this.baseSalary = baseSalary;
+    public Classe(Integer Id, String Nome, Integer forca, Integer Agilidade, Integer Destreza, Raca raca) {
+        this.Id = Id;
+        this.Nome = Nome;
+        this.forca = forca;
+        this.Agilidade = Agilidade;
+        this.Destreza = Destreza;
         this.raca = raca;
     }
 
     public Integer getId() {
-        return id;
+        return Id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer Id) {
+        this.Id = Id;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return Nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String Nome) {
+        this.Nome = Nome;
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getforca() {
+        return forca;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setforca(Integer forca) {
+        this.forca = forca;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public Integer getAgilidade() {
+        return Agilidade;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setAgilidade(Integer Agilidade) {
+        this.Agilidade = Agilidade;
     }
 
-    public Double getBaseSalary() {
-        return baseSalary;
+    public Integer getDestreza() {
+        return Destreza;
     }
 
-    public void setBaseSalary(Double baseSalary) {
-        this.baseSalary = baseSalary;
+    public void setDestreza(Integer Destreza) {
+        this.Destreza = Destreza;
     }
 
     public Raca getDepartment() {
@@ -82,10 +83,10 @@ public class Classe implements Serializable {
         if (getClass() != o.getClass())
             return false;
         Classe other = (Classe) o;
-        if (id == null){
-            if (other.id != null)
+        if (Id == null){
+            if (other.Id != null)
                 return false;
-        } else if (!id.equals(other.id))
+        } else if (!Id.equals(other.Id))
             return false;
 
         return true;
@@ -95,18 +96,18 @@ public class Classe implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((Id == null) ? 0 : Id.hashCode());
         return result;
     }
 
     @Override
     public String toString() {
         return "Classe{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", birthDate=" + birthDate +
-                ", baseSalary=" + baseSalary +
+                "Id=" + Id +
+                ", Nome='" + Nome + '\'' +
+                ", forca='" + forca + '\'' +
+                ", Agilidade=" + Agilidade +
+                ", Destreza=" + Destreza +
                 ", raca=" + raca +
                 '}';
     }

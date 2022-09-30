@@ -1,7 +1,7 @@
 package senac.senacfx.model.services;
 
 import senac.senacfx.model.dao.DaoFactory;
-import senac.senacfx.model.dao.DepartmentDao;
+import senac.senacfx.model.dao.RacaDao;
 import senac.senacfx.model.entities.Raca;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public class DepartmentService {
 
     //dependencia injetada usando padrao factory
-    private DepartmentDao dao = DaoFactory.createDepartmentDao();
+    private RacaDao dao = DaoFactory.createDepartmentDao();
 
     public List<Raca> findAll() {
         return dao.findAll();

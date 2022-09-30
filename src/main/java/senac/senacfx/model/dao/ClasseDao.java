@@ -4,7 +4,7 @@ import senac.senacfx.model.entities.Raca;
 import senac.senacfx.model.entities.Classe;
 import java.util.List;
 
-public interface SellerDao {
+public interface ClasseDao {
 
     void insert(Classe obj);
     void update(Classe obj);

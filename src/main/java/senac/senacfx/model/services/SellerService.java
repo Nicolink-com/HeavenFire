@@ -1,7 +1,7 @@
 package senac.senacfx.model.services;
 
 import senac.senacfx.model.dao.DaoFactory;
-import senac.senacfx.model.dao.SellerDao;
+import senac.senacfx.model.dao.ClasseDao;
 import senac.senacfx.model.entities.Classe;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public class SellerService {
 
     //dependencia injetada usando padrao factory
-    private SellerDao dao = DaoFactory.createSellerDao();
+    private ClasseDao dao = DaoFactory.createSellerDao();
 
     public List<Classe> findAll() {
         return dao.findAll();

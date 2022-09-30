@@ -2,7 +2,7 @@ package senac.senacfx.model.dao.impl;
 
 import senac.senacfx.db.DB;
 import senac.senacfx.db.DbException;
-import senac.senacfx.model.dao.DepartmentDao;
+import senac.senacfx.model.dao.RacaDao;
 import senac.senacfx.model.entities.Raca;
 
 import java.sql.*;
@@ -11,10 +11,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DepartmentDaoJDBC implements DepartmentDao {
+public class RacaDaoJDBC implements RacaDao {
     private Connection conn;
 
-    public DepartmentDaoJDBC(Connection conn) {
+    public RacaDaoJDBC(Connection conn) {
         this.conn = conn;
     }
 
