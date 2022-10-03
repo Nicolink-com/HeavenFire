@@ -69,9 +69,9 @@ public class ViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Personagem> list = new ArrayList<>();
-        list.add(new Personagem(1, "Maria", "vidaloka12@gmail.com"));
-        list.add(new Personagem(2, "John", "snow@gmail.com"));
-        list.add(new Personagem(3, "Marcos", "marcoveio@gmail.com"));
+        list.add(new Personagem(1, "Antonio", "M",103));
+        list.add(new Personagem(2, "John", "M", 230));
+        list.add(new Personagem(3, "Rarissa", "F", 150));
 
         obsList = FXCollections.observableArrayList(list);
         combo1.setItems(obsList);
@@ -80,7 +80,7 @@ public class ViewController implements Initializable {
             @Override
             protected void updateItem(Personagem item, boolean empty) {
                 super.updateItem(item, empty);
-                setText(empty ? "" : item.getName());
+                setText(empty ? "" : item.getnome());
             }
         };
         combo1.setCellFactory(factory);

@@ -93,7 +93,7 @@ public class DepartmentFormController implements Initializable {
         if (txtName.getText() == null || txtName.getText().trim().equals("")){
             exception.addError("name", "campo nao pode ser vazio");
         }
-        obj.setName(txtName.getText());
+        obj.setNome(txtName.getText());
 
         if (exception.getErrors().size() > 0){
             throw exception;
@@ -125,14 +125,14 @@ public class DepartmentFormController implements Initializable {
         }
 
         txtId.setText(String.valueOf(entity.getId()));
-        txtName.setText(entity.getName());
+        txtName.setText(entity.getNome());
     }
 
     private void setErrorMessages(Map<String, String> errors){
         Set<String> fields = errors.keySet();
 
-        if (fields.contains("name")){
-            labelErrorName.setText(errors.get("name"));
+        if (fields.contains("nome")){
+            labelErrorName.setText(errors.get("nome"));
         }
     }
 

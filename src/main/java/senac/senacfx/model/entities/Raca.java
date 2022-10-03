@@ -6,14 +6,14 @@ public class Raca implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private Integer id;
-    private String name;
+    private String nome;
 
     public Raca() {
     }
 
-    public Raca(Integer id, String name) {
+    public Raca(Integer id, String nome) {
         this.id = id;
-        this.name = name;
+        this.nome = nome;
     }
 
     public Integer getId() {
@@ -24,12 +24,12 @@ public class Raca implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class Raca implements Serializable {
     public String toString() {
         return "Raca{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", nome='" + nome + '\'' +
                 '}';
     }
 }

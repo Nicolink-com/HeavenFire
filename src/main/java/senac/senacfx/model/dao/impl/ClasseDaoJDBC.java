@@ -25,15 +25,17 @@ public class ClasseDaoJDBC implements ClasseDao {
         try{
             st = conn.prepareStatement(
                     "insert into raca " +
-                            "(Name, Email, BirthDate, BaseSalary, DepartmentId) " +
-                            "values (?, ?, ?, ?, ?)",
+                            "(Nome, Forca, Agilidade, Destreza, Hp, Magia, RacaId) " +
+                            "values (?, ?, ?, ?, ?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             st.setString(1, obj.getNome());
             st.setInt(2, obj.getforca());
-            st.setInt(3,  obj.getAgilidade());
+            st.setInt(3,  obj.getResistencia());
             st.setInt(4, obj.getDestreza());
-            st.setInt(5, obj.getDepartment().getId());
+            st.setInt(5, obj.getRaca().getId());
+            st.setInt(6,obj.getHP());
+            st.setInt(7,obj.getMagia());
 
             int rowsAffected = st.executeUpdate();
 
@@ -60,16 +62,16 @@ public class ClasseDaoJDBC implements ClasseDao {
         PreparedStatement st = null;
         try{
             st = conn.prepareStatement(
-                    "update seller " +
-                            "set Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? " +
-                            "where id = ?");
+                    "update Calsse " +
+                            "set Name = ?, Forca = ?, Resistencia = ?, Destreza = ?, HP = ?, Magia = ?");
 
             st.setString(1, obj.getNome());
             st.setInt(2, obj.getforca());
-            st.setInt(3, obj.getAgilidade());
+            st.setInt(3, obj.getResistencia());
             st.setInt(4, obj.getDestreza());
-            st.setInt(5, obj.getDepartment().getId());
-            st.setInt(6, obj.getId());
+            st.setInt(5, obj.getRaca().getId());
+            st.setInt(6, obj.getHP());
+            st.setInt(7,obj.getMagia());
 
             st.executeUpdate();
 
@@ -131,8 +133,8 @@ public class ClasseDaoJDBC implements ClasseDao {
 
     private Raca instantiateDepartment(ResultSet rs) throws SQLException {
         Raca dep = new Raca();
-        dep.setId(rs.getInt("DepartmentId"));
-        dep.setName(rs.getString("DepName"));
+        dep.setId(rs.getInt("RacaId"));
+        dep.setNome(rs.getString("RacaName"));
         return dep;
     }
 
@@ -142,8 +144,8 @@ public class ClasseDaoJDBC implements ClasseDao {
         obj.setNome(rs.getString("Name"));
         obj.setforca(rs.getInt("Raca"));
         obj.setDestreza(rs.getInt("Destreza"));
-        obj.setAgilidade(rs.getInt("Agilidade"));
-        obj.setDepartment(dep);
+        obj.setResistencia(rs.getInt("Resistencia"));
+        obj.setRaca(new Raca());
         return obj;
     }
     @Override

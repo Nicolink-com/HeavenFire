@@ -6,16 +6,20 @@ public class Personagem implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private Integer id;
-    private String name;
-    private String email;
+    private String nome;
+    private String sexo;
+
+    private Integer idade;
+
 
     public Personagem() {
     }
 
-    public Personagem(Integer id, String name, String email) {
+    public Personagem(Integer id, String nome, String sexo, Integer idade) {
         this.id = id;
-        this.name = name;
-        this.email = email;
+        this.nome = nome;
+        this.sexo = sexo;
+        this.idade = idade;
     }
 
     public Integer getId() {
@@ -26,28 +30,37 @@ public class Personagem implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getnome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setnome(String nome) {
+        this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
+    public String getsexo() {
+        return sexo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setsexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public Integer getIdade() {
+        return idade;
+    }
+
+    public void setIdade(Integer idade) {
+        this.idade = idade;
     }
 
     @Override
     public String toString() {
         return "Personagem{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
+                ", nome='" + nome + '\'' +
+                ", sexo='" + sexo + '\'' +
+                ",idade='" + idade + '\'' +
                 '}';
     }
 }

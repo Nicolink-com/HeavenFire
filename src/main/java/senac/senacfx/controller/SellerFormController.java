@@ -44,7 +44,7 @@ public class SellerFormController implements Initializable {
     private TextField txtforca;
 
     @FXML
-    private TextField txtAgilidade;
+    private TextField txtResistencia;
 
     @FXML
     private TextField txtDestreza;
@@ -130,14 +130,14 @@ public class SellerFormController implements Initializable {
         }
         obj.setforca(Integer.valueOf(txtforca.getText()));
 
-        obj.setAgilidade(Utils.tryParseToInt(txtAgilidade.getText()));
+        obj.setResistencia(Utils.tryParseToInt(txtResistencia.getText()));
 
         if (txtDestreza.getText() == null || txtDestreza.getText().trim().equals("")){
             exception.addError("Destreza", "campo nao pode ser vazio");
         }
         obj.setDestreza(Utils.tryParseToInt(txtDestreza.getText()));
 
-        obj.setDepartment(comboBoxDepartment.getValue());
+        obj.setRaca(comboBoxDepartment.getValue());
 
         if (exception.getErrors().size() > 0){
             throw exception;
@@ -162,7 +162,7 @@ public class SellerFormController implements Initializable {
         Constraints.setTextFieldMaxLength(txtName, 70);
         Constraints.setTextFieldDouble(txtDestreza);
         Constraints.setTextFieldMaxLength(txtforca, 60);
-        Constraints.setTextFieldInteger(txtAgilidade);
+        Constraints.setTextFieldInteger(txtResistencia);
 
         initializeComboBoxDepartment();
 
@@ -197,7 +197,7 @@ public class SellerFormController implements Initializable {
 
         labelErrorName.setText((fields.contains("nome") ? errors.get("nome") : ""));
         labelErrorEmail.setText((fields.contains("forca") ? errors.get("forca") : ""));
-        labelErrorBirthDate.setText((fields.contains("Agilidade") ? errors.get("Agilidade") : ""));
+        labelErrorBirthDate.setText((fields.contains("Resistencia") ? errors.get("Resistencia") : ""));
         labelErrorBaseSalary.setText((fields.contains("Destreza") ? errors.get("Destreza") : ""));
         labelErrorName.getStyleClass().add("button");
 
@@ -208,7 +208,7 @@ public class SellerFormController implements Initializable {
             @Override
             protected void updateItem(Raca item, boolean empty) {
                 super.updateItem(item, empty);
-                setText(empty ? "" : item.getName());
+                setText(empty ? "" : item.getNome());
             }
         };
         comboBoxDepartment.setCellFactory(factory);

@@ -22,12 +22,12 @@ public class RacaDaoJDBC implements RacaDao {
     public void insert(Raca obj) {
         PreparedStatement st = null;
         try {
-            st = conn.prepareStatement("insert into department " +
-                    "(Name) " +
+            st = conn.prepareStatement("insert into Raca " +
+                    "(Nome) " +
                     "values (?) ",
                     Statement.RETURN_GENERATED_KEYS);
 
-            st.setString(1, obj.getName());
+            st.setString(1, obj.getNome());
 
             int rowsAffected = st.executeUpdate();
 
@@ -54,11 +54,11 @@ public class RacaDaoJDBC implements RacaDao {
 
         PreparedStatement st = null;
         try {
-            st = conn.prepareStatement("update department " +
-                            "set Name = ? " +
+            st = conn.prepareStatement("update Raca " +
+                            "set Nome = ? " +
                             "where Id = ?");
 
-            st.setString(1, obj.getName());
+            st.setString(1, obj.getNome());
             st.setInt(2, obj.getId());
 
             int rowsAffected = st.executeUpdate();
@@ -78,14 +78,14 @@ public class RacaDaoJDBC implements RacaDao {
     public void deleteById(Integer id) {
         PreparedStatement st = null;
         try{
-            st = conn.prepareStatement("delete from department where Id = ?");
+            st = conn.prepareStatement("delete from Raca where Id = ?");
 
             st.setInt(1, id);
 
             int rowsAffected = st.executeUpdate();
 
             if (rowsAffected == 0){
-                throw new DbException("Departamento inexistente!");
+                throw new DbException("Raca inexistente!");
             }
 
         } catch (SQLException e){
@@ -102,7 +102,7 @@ public class RacaDaoJDBC implements RacaDao {
         ResultSet rs = null;
         try{
             st = conn.prepareStatement("" +
-                    "select * from department " +
+                    "select * from Raca " +
                     "where Id = ?");
 
             st.setInt(1, id);
@@ -125,7 +125,7 @@ public class RacaDaoJDBC implements RacaDao {
     private Raca instantiateDepartment(ResultSet rs) throws SQLException {
         Raca dep = new Raca();
         dep.setId(rs.getInt("Id"));
-        dep.setName(rs.getString("Name"));
+        dep.setNome(rs.getString("Nome"));
         return dep;
     }
 
@@ -136,8 +136,8 @@ public class RacaDaoJDBC implements RacaDao {
         ResultSet rs = null;
         try{
             st = conn.prepareStatement("" +
-                    "select * from department "+
-                    "order by Name");
+                    "select * from Raca "+
+                    "order by Nome");
 
             rs = st.executeQuery();
 

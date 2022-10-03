@@ -9,21 +9,27 @@ public class Classe implements Serializable {
     private String Nome;
     private Integer forca;
     
-    private Integer Agilidade;
+    private Integer Resistencia;
     private Integer Destreza;
+
+    private Integer HP;
+
+    private  Integer Magia;
 
     private Raca raca;
 
     public Classe() {
     }
 
-    public Classe(Integer Id, String Nome, Integer forca, Integer Agilidade, Integer Destreza, Raca raca) {
+    public Classe(Integer Id, String Nome, Integer forca, Integer Resistencia, Integer Destreza, Integer HP, Integer Magia, Raca raca) {
         this.Id = Id;
         this.Nome = Nome;
         this.forca = forca;
-        this.Agilidade = Agilidade;
+        this.Resistencia = Resistencia;
         this.Destreza = Destreza;
         this.raca = raca;
+        this.HP = HP;
+        this.Magia = Magia;
     }
 
     public Integer getId() {
@@ -50,12 +56,12 @@ public class Classe implements Serializable {
         this.forca = forca;
     }
 
-    public Integer getAgilidade() {
-        return Agilidade;
+    public Integer getResistencia() {
+        return Resistencia;
     }
 
-    public void setAgilidade(Integer Agilidade) {
-        this.Agilidade = Agilidade;
+    public void setResistencia(Integer Resistencia) {
+        this.Resistencia = Resistencia;
     }
 
     public Integer getDestreza() {
@@ -66,11 +72,27 @@ public class Classe implements Serializable {
         this.Destreza = Destreza;
     }
 
-    public Raca getDepartment() {
+    public Integer getHP() {
+        return HP;
+    }
+
+    public void setHP(Integer HP) {
+        this.HP = HP;
+    }
+
+    public Integer getMagia() {
+        return Magia;
+    }
+
+    public void setMagia(Integer magia) {
+        Magia = magia;
+    }
+
+    public Raca getRaca() {
         return raca;
     }
 
-    public void setDepartment(Raca raca) {
+    public void setRaca(Raca raca) {
         this.raca = raca;
     }
 
@@ -106,7 +128,7 @@ public class Classe implements Serializable {
                 "Id=" + Id +
                 ", Nome='" + Nome + '\'' +
                 ", forca='" + forca + '\'' +
-                ", Agilidade=" + Agilidade +
+                ", Resistencia=" + Resistencia +
                 ", Destreza=" + Destreza +
                 ", raca=" + raca +
                 '}';
