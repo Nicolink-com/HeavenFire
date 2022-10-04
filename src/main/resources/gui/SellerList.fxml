@@ -11,7 +11,7 @@
 
 <VBox maxHeight="300.0" maxWidth="800.0" minHeight="300.0" minWidth="800.0" prefHeight="300.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="senac.senacfx.controller.SellerListController">
          <children>
-            <Label text="Registro de Vendedores">
+            <Label text="Classe">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -31,9 +31,11 @@
         <columns>
           <TableColumn fx:id="tableColumnId" prefWidth="24.0" text="Id" />
           <TableColumn fx:id="tableColumnName" prefWidth="96.0" text="Nome" />
-            <TableColumn fx:id="tableColumnEmail" prefWidth="105.0" text="E-mail" />
-            <TableColumn fx:id="tableColumnBirthDate" prefWidth="142.0" text="Data de Nascimento" />
-            <TableColumn fx:id="tableColumnBaseSalary" minWidth="8.0" prefWidth="61.0" text="Salário" />
+            <TableColumn fx:id="tableColumnforça" prefWidth="105.0" text="Força" />
+            <TableColumn fx:id="tableColumnResistencia" prefWidth="142.0" text="Resistência" />
+            <TableColumn fx:id="tableColumnDestreza" minWidth="8.0" prefWidth="61.0" text="Destreza" />
+            <TableColumn fx:id="tableColumnHP" minWidth="8.0" prefWidth="61.0" text="HP" />
+            <TableColumn fx:id="tableColumnMagia" minWidth="8.0" prefWidth="61.0" text="Magia" />
             <TableColumn fx:id="tableColumnEDIT" prefWidth="78.0" />
             <TableColumn fx:id="tableColumnREMOVE" prefWidth="83.0" />
         </columns>

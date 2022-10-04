@@ -8,12 +8,15 @@ public class Raca implements Serializable {
     private Integer id;
     private String nome;
 
+    private Double altura;
+
     public Raca() {
     }
 
-    public Raca(Integer id, String nome) {
+    public Raca(Integer id, String nome, Double altura) {
         this.id = id;
         this.nome = nome;
+        this.altura = altura;
     }
 
     public Integer getId() {
@@ -58,11 +61,20 @@ public class Raca implements Serializable {
         return result;
     }
 
+    public Double getAltura() {
+        return altura;
+    }
+
+    public void setAltura(Double altura) {
+        this.altura = altura;
+    }
+
     @Override
     public String toString() {
         return "Raca{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
+                ", altura=" + altura +
                 '}';
     }
 }

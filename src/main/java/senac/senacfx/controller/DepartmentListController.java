@@ -42,6 +42,9 @@ public class DepartmentListController implements Initializable, DataChangeListen
     private TableColumn<Raca, String> tableColumnName;
 
     @FXML
+    private TableColumn<Raca, Double> tableColumnAltura;
+
+    @FXML
     private TableColumn<Raca, Raca> tableColumnEDIT;
 
     @FXML
@@ -72,8 +75,9 @@ public class DepartmentListController implements Initializable, DataChangeListen
     }
 
     private void initializeNodes() {
-        tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tableColumnId.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        tableColumnName.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        tableColumnAltura.setCellValueFactory(new PropertyValueFactory<>("Altura"));
 
         Stage stage = (Stage) Main.getMainScene().getWindow();
         tableViewDepartment.prefHeightProperty().bind(stage.heightProperty());

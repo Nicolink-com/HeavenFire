@@ -34,6 +34,9 @@ public class DepartmentFormController implements Initializable {
     private TextField txtName;
 
     @FXML
+    private TextField txtAltura;
+
+    @FXML
     private Label labelErrorName;
 
     @FXML
@@ -94,6 +97,8 @@ public class DepartmentFormController implements Initializable {
             exception.addError("name", "campo nao pode ser vazio");
         }
         obj.setNome(txtName.getText());
+
+        obj.setAltura(Double.valueOf(txtAltura.getText()));
 
         if (exception.getErrors().size() > 0){
             throw exception;

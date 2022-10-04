@@ -23,11 +23,12 @@ public class RacaDaoJDBC implements RacaDao {
         PreparedStatement st = null;
         try {
             st = conn.prepareStatement("insert into Raca " +
-                    "(Nome) " +
-                    "values (?) ",
+                    "(Nome, Altura) " +
+                    "values (?, ?) ",
                     Statement.RETURN_GENERATED_KEYS);
 
             st.setString(1, obj.getNome());
+            st.setDouble(2, obj.getAltura());
 
             int rowsAffected = st.executeUpdate();
 
@@ -55,11 +56,13 @@ public class RacaDaoJDBC implements RacaDao {
         PreparedStatement st = null;
         try {
             st = conn.prepareStatement("update Raca " +
-                            "set Nome = ? " +
+                            "set Nome = ? ," +
+                            " Altura = ? " +
                             "where Id = ?");
 
             st.setString(1, obj.getNome());
-            st.setInt(2, obj.getId());
+            st.setDouble(2, obj.getAltura());
+            st.setInt(3, obj.getId());
 
             int rowsAffected = st.executeUpdate();
 
@@ -126,6 +129,7 @@ public class RacaDaoJDBC implements RacaDao {
         Raca dep = new Raca();
         dep.setId(rs.getInt("Id"));
         dep.setNome(rs.getString("Nome"));
+        dep.setAltura(rs.getDouble("Altura"));
         return dep;
     }
 
