@@ -44,7 +44,7 @@
                   </Button>
                </children>
             </HBox>
-            <Label text="Label" GridPane.rowIndex="2" />
+            <Label text="Altura" GridPane.rowIndex="2" />
             <TextField fx:id="txtAltura" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
