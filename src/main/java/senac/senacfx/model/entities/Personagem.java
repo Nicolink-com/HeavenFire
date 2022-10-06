@@ -11,18 +11,21 @@ public class Personagem implements Serializable {
 
     private Integer Id_classe;
 
+    private Integer Id_raca;
+
     private Integer idade;
 
 
     public Personagem() {
     }
 
-    public Personagem(Integer id, String nome, String sexo, Integer idade, Integer Id_classe) {
+    public Personagem(Integer id, String nome, String sexo, Integer idade, Integer Id_classe, Integer Id_raca) {
         this.id = id;
         this.nome = nome;
         this.sexo = sexo;
         this.idade = idade;
         this.Id_classe = Id_classe;
+        this.Id_raca = Id_raca;
     }
 
     public Integer getId() {
@@ -61,8 +64,19 @@ public class Personagem implements Serializable {
         return Id_classe;
     }
 
+    public Integer getId_raca() {
+        return Id_raca;
+    }
+
+    public void setId_raca(Integer id_raca) {
+        Id_raca = id_raca;
+    }
+
     public void setId_classe(Integer id_classe) {
         Id_classe = id_classe;
+
+
+
     }
 
     @Override
@@ -73,6 +87,7 @@ public class Personagem implements Serializable {
                 ", sexo='" + sexo + '\'' +
                 ",idade='" + idade + '\'' +
                 ",Id_classe='" + Id_classe + '\'' +
+                ",Id_raca='" + Id_raca + '\''+
                 '}';
     }
 }
