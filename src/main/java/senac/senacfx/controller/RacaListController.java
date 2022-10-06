@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class DepartmentListController implements Initializable, DataChangeListener {
+public class RacaListController implements Initializable, DataChangeListener {
     //ao inves de implementar um service = new DepartmentService(), ficaria acoplamento forte
     //e seria obrigado a instanciar a classe
     private DepartmentService service;
@@ -100,7 +100,7 @@ public class DepartmentListController implements Initializable, DataChangeListen
             FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
             Pane pane = loader.load();
 
-            DepartmentFormController controller = loader.getController();
+            RacaFormController controller = loader.getController();
             controller.setDepartment(obj);
             controller.setDepartmentService(new DepartmentService());
             controller.subscribeDataChangeListener(this);

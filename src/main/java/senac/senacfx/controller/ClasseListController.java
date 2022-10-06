@@ -24,12 +24,11 @@ import senac.senacfx.model.services.SellerService;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class SellerListController implements Initializable, DataChangeListener {
+public class ClasseListController implements Initializable, DataChangeListener {
     //ao inves de implementar um service = new SellerService(), ficaria acoplamento forte
     //e seria obrigado a instanciar a classe
     private SellerService service;
@@ -44,13 +43,19 @@ public class SellerListController implements Initializable, DataChangeListener {
     private TableColumn<Classe, String> tableColumnName;
 
     @FXML
-    private TableColumn<Classe, String> tableColumnEmail;
+    private TableColumn<Classe, Integer> tableColumnforca;
 
     @FXML
-    private TableColumn<Classe, Date> tableColumnBirthDate;
+    private TableColumn<Classe, Integer> tableColumnResistencia;
 
     @FXML
-    private TableColumn<Classe, Double> tableColumnBaseSalary;
+    private TableColumn<Classe, Integer> tableColumnDestreza;
+
+    @FXML
+    private TableColumn<Classe, Integer> tableColumnHP;
+
+    @FXML
+    private TableColumn<Classe, Integer> tableColumnMagia;
 
     @FXML
     private TableColumn<Classe, Classe> tableColumnEDIT;
@@ -85,11 +90,11 @@ public class SellerListController implements Initializable, DataChangeListener {
     private void initializeNodes() {
         tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        tableColumnEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        tableColumnBirthDate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
-        Utils.formatTableColumnDate(tableColumnBirthDate, "dd/MM/yyyy");
-        tableColumnBaseSalary.setCellValueFactory(new PropertyValueFactory<>("baseSalary"));
-        Utils.formatTableColumnDouble(tableColumnBaseSalary, 2);
+        tableColumnforca.setCellValueFactory(new PropertyValueFactory<>("forca"));
+        tableColumnResistencia.setCellValueFactory(new PropertyValueFactory<>("Resistencia"));
+        tableColumnDestreza.setCellValueFactory(new PropertyValueFactory<>("Destreza"));
+        tableColumnHP.setCellValueFactory(new PropertyValueFactory<>("HP"));
+        tableColumnMagia.setCellValueFactory(new PropertyValueFactory<>("Magia"));
 
 
         Stage stage = (Stage) Main.getMainScene().getWindow();
@@ -113,7 +118,7 @@ public class SellerListController implements Initializable, DataChangeListener {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
             Pane pane = loader.load();
 
-            SellerFormController controller = loader.getController();
+            ClasseFormController controller = loader.getController();
             controller.setSeller(obj);
             controller.setServices(new SellerService(), new DepartmentService());
             controller.loadAssociatedObjects();
