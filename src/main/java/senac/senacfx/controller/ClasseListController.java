@@ -68,6 +68,10 @@ public class ClasseListController implements Initializable, DataChangeListener {
 
     private ObservableList<Classe> obsList;
 
+    public ClasseListController(TableColumn<Classe, Integer> tableColumnforca) {
+        this.tableColumnforca = tableColumnforca;
+    }
+
     @FXML
     public void onBtNewAction(ActionEvent event){
         Stage parentStage = Utils.currentStage(event);
