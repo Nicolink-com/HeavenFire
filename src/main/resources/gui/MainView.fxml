@@ -5,17 +5,23 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="senac.senacfx.controller.MainViewController">
     <content>
         <VBox prefHeight="405.0" prefWidth="566.0">
             <children>
-                <MenuBar>
+            <ImageView fitHeight="379.0" fitWidth="566.0" layoutX="1.0">
+               <image>
+                  <Image url="@../HeavenFireAbertura.jpeg" />
+               </image>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ImageView>
+                <MenuBar prefHeight="146.0" prefWidth="567.0">
                     <menus>
                         <Menu mnemonicParsing="false" text="Registrar">
                             <items>
@@ -30,25 +36,6 @@
                         </Menu>
                     </menus>
                 </MenuBar>
-            <TextField alignment="CENTER" editable="false" prefHeight="44.0" prefWidth="566.0" text="HEAVENFIRE.COM">
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </TextField>
-            <ImageView fitHeight="230.0" fitWidth="300.0">
-               <image>
-                  <Image url="@../HeavenFireAbertura.jpeg" />
-               </image>
-               <VBox.margin>
-                  <Insets left="125.0" top="50.0" />
-               </VBox.margin>
-            </ImageView>
             </children>
         </VBox>
     </content>
