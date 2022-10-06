@@ -13,14 +13,6 @@
     <content>
         <VBox prefHeight="405.0" prefWidth="566.0">
             <children>
-            <ImageView fitHeight="379.0" fitWidth="566.0" layoutX="1.0">
-               <image>
-                  <Image url="@../HeavenFireAbertura.jpeg" />
-               </image>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </ImageView>
                 <MenuBar prefHeight="146.0" prefWidth="567.0">
                     <menus>
                         <Menu mnemonicParsing="false" text="Registrar">
@@ -36,6 +28,14 @@
                         </Menu>
                     </menus>
                 </MenuBar>
+            <ImageView fitHeight="379.0" fitWidth="566.0" layoutX="1.0">
+               <image>
+                  <Image url="@../HeavenFireAbertura.jpeg" />
+               </image>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ImageView>
             </children>
         </VBox>
     </content>
