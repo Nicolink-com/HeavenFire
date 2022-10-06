@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="594.0" maxWidth="600.0" prefHeight="594.0" prefWidth="500.0" snapToPixel="false" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="senac.senacfx.controller.ViewController">
+   <children>
+      <Label layoutX="117.0" layoutY="21.0" prefHeight="35.0" prefWidth="281.0" text="Registro de Personagem">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt1" layoutX="72.0" layoutY="102.0" prefHeight="25.0" prefWidth="226.0" promptText="Primeiro numero" />
+      <TextField fx:id="txt2" layoutX="72.0" layoutY="193.0" prefHeight="25.0" prefWidth="226.0" promptText="Segundo numero" />
+      <Button fx:id="btSum" layoutX="380.0" layoutY="535.0" mnemonicParsing="false" onAction="#onBtSumAction" text="Registrar" />
+      <Label fx:id="labelResult" layoutX="329.0" layoutY="78.0" prefHeight="17.0" prefWidth="51.0" />
+      <Label layoutX="16.0" layoutY="108.0" text="Nome" />
+      <ImageView fitHeight="278.0" fitWidth="192.0" layoutX="250.0" layoutY="240.0">
+         <image>
+            <Image url="@../esdeath.jpg" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="combo1" layoutX="14.0" layoutY="238.0" onAction="#onComboBoxPersonAction" prefHeight="25.0" prefWidth="137.0" promptText="Raça" />
+      <ComboBox fx:id="combo11" layoutX="14.0" layoutY="283.0" onAction="#onComboBoxPersonAction" prefHeight="25.0" prefWidth="137.0" promptText="Classe" />
+      <Label layoutX="16.0" layoutY="152.0" text="Sexo" />
+      <ComboBox fx:id="combo12" layoutX="72.0" layoutY="148.0" onAction="#onComboBoxPersonAction" prefHeight="25.0" prefWidth="137.0" />
+      <Label layoutX="16.0" layoutY="194.0" text="Idade" />
+   </children>
+</AnchorPane>
