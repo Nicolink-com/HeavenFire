@@ -43,7 +43,7 @@ public class ClasseListController implements Initializable, DataChangeListener {
     private TableColumn<Classe, String> tableColumnName;
 
     @FXML
-    private TableColumn<Classe, Integer> tableColumnforca;
+    private final TableColumn<Classe, Integer> tableColumnforca;
 
     @FXML
     private TableColumn<Classe, Integer> tableColumnResistencia;
@@ -65,8 +65,6 @@ public class ClasseListController implements Initializable, DataChangeListener {
 
     @FXML
     private Button btNew;
-
-    private ObservableList<Classe> obsList;
 
     public ClasseListController(TableColumn<Classe, Integer> tableColumnforca) {
         this.tableColumnforca = tableColumnforca;
@@ -111,7 +109,7 @@ public class ClasseListController implements Initializable, DataChangeListener {
             throw new IllegalStateException("Service is null!");
         }
         List<Classe> list = service.findAll();
-        obsList = FXCollections.observableArrayList(list);
+        ObservableList<Classe> obsList = FXCollections.observableArrayList(list);
         tableViewSeller.setItems(obsList);
         initEditButtons();
         initRemoveButtons();

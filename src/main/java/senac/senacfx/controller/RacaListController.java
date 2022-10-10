@@ -53,8 +53,6 @@ public class RacaListController implements Initializable, DataChangeListener {
     @FXML
     private Button btNew;
 
-    private ObservableList<Raca> obsList;
-
     @FXML
     public void onBtNewAction(ActionEvent event){
         Stage parentStage = Utils.currentStage(event);
@@ -89,7 +87,7 @@ public class RacaListController implements Initializable, DataChangeListener {
             throw new IllegalStateException("Service is null!");
         }
         List<Raca> list = service.findAll();
-        obsList = FXCollections.observableArrayList(list);
+        ObservableList<Raca> obsList = FXCollections.observableArrayList(list);
         tableViewDepartment.setItems(obsList);
         initEditButtons();
         initRemoveButtons();
