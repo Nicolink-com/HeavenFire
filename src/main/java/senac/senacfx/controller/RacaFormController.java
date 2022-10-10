@@ -131,6 +131,7 @@ public class RacaFormController implements Initializable {
 
         txtId.setText(String.valueOf(entity.getId()));
         txtName.setText(entity.getNome());
+        txtAltura.setText(String.valueOf(entity.getAltura()));
     }
 
     private void setErrorMessages(Map<String, String> errors){
