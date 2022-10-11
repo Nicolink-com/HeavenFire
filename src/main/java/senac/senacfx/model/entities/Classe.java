@@ -16,18 +16,18 @@ public class Classe implements Serializable {
 
     private  Integer Magia;
 
-    private Raca raca;
+
 
     public Classe() {
     }
 
-    public Classe(Integer Id, String Nome, Integer forca, Integer Resistencia, Integer Destreza, Integer HP, Integer Magia, Raca raca) {
+    public Classe(Integer Id, String Nome, Integer forca, Integer Resistencia, Integer Destreza, Integer HP, Integer Magia) {
         this.Id = Id;
         this.Nome = Nome;
         this.forca = forca;
         this.Resistencia = Resistencia;
         this.Destreza = Destreza;
-        this.raca = raca;
+
         this.HP = HP;
         this.Magia = Magia;
     }
@@ -88,13 +88,7 @@ public class Classe implements Serializable {
         Magia = magia;
     }
 
-    public Raca getRaca() {
-        return raca;
-    }
 
-    public void setRaca(Raca raca) {
-        this.raca = raca;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -130,7 +124,7 @@ public class Classe implements Serializable {
                 ", forca='" + forca + '\'' +
                 ", Resistencia=" + Resistencia +
                 ", Destreza=" + Destreza +
-                ", raca=" + raca +
+                ", raca=" +
                 '}';
     }
 }

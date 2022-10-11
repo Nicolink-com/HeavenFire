@@ -134,7 +134,7 @@ public class ClasseFormController implements Initializable {
         }
         obj.setDestreza(Utils.tryParseToInt(txtDestreza.getText()));
 
-        obj.setRaca(comboBoxDepartment.getValue());
+
 
         if (exception.getErrors().size() > 0){
             throw exception;

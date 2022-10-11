@@ -43,7 +43,7 @@ public class ClasseListController implements Initializable, DataChangeListener {
     private TableColumn<Classe, String> tableColumnName;
 
     @FXML
-    private final TableColumn<Classe, Integer> tableColumnforca;
+    private TableColumn<Classe, Integer> tableColumnforca;
 
     @FXML
     private TableColumn<Classe, Integer> tableColumnResistencia;
@@ -66,15 +66,12 @@ public class ClasseListController implements Initializable, DataChangeListener {
     @FXML
     private Button btNew;
 
-    public ClasseListController(TableColumn<Classe, Integer> tableColumnforca) {
-        this.tableColumnforca = tableColumnforca;
-    }
 
     @FXML
     public void onBtNewAction(ActionEvent event){
         Stage parentStage = Utils.currentStage(event);
         Classe obj = new Classe();
-        createDialogForm(obj,"/gui/SellerForm.fxml", parentStage);
+        createDialogForm(obj, parentStage);
     }
 
     //feito isso usando um set, para injetar dependencia, boa pratica
@@ -115,9 +112,9 @@ public class ClasseListController implements Initializable, DataChangeListener {
         initRemoveButtons();
     }
 
-    private void createDialogForm(Classe obj, String absoluteName, Stage parentStage){
+    private void createDialogForm(Classe obj, Stage parentStage){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/SellerForm.fxml"));
             Pane pane = loader.load();
 
             ClasseFormController controller = loader.getController();
@@ -160,7 +157,7 @@ public class ClasseListController implements Initializable, DataChangeListener {
                 setGraphic(button);
                 button.setOnAction(
                         event -> createDialogForm(
-                                obj, "/gui/SellerForm.fxml",Utils.currentStage(event)));
+                                obj, Utils.currentStage(event)));
             }
         });
     }

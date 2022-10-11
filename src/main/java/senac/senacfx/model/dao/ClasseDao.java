@@ -13,6 +13,7 @@ public interface ClasseDao {
     void deleteById(Integer id);
     Classe findById(Integer id);
     List<Classe> findAll();
-    List<Classe> findByDepartment(Raca raca);
 
+
+    List<Classe> findByDepartment(Raca raca);
 }

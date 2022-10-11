@@ -25,7 +25,7 @@ public class ClasseDaoJDBC implements ClasseDao {
         try{
             st = conn.prepareStatement(
                     "insert into raca " +
-                            "(Nome, Forca, Agilidade, Destreza, Hp, Magia, RacaId) " +
+                            "(Nome, Forca, Resistencia, Destreza, Hp, Magia, Id) " +
                             "values (?, ?, ?, ?, ?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
@@ -33,7 +33,6 @@ public class ClasseDaoJDBC implements ClasseDao {
             st.setInt(2, obj.getforca());
             st.setInt(3,  obj.getResistencia());
             st.setInt(4, obj.getDestreza());
-            st.setInt(5, obj.getRaca().getId());
             st.setInt(6,obj.getHP());
             st.setInt(7,obj.getMagia());
 
@@ -69,7 +68,7 @@ public class ClasseDaoJDBC implements ClasseDao {
             st.setInt(2, obj.getforca());
             st.setInt(3, obj.getResistencia());
             st.setInt(4, obj.getDestreza());
-            st.setInt(5, obj.getRaca().getId());
+
             st.setInt(6, obj.getHP());
             st.setInt(7,obj.getMagia());
 
@@ -86,7 +85,7 @@ public class ClasseDaoJDBC implements ClasseDao {
     public void deleteById(Integer id) {
         PreparedStatement st = null;
         try{
-            st = conn.prepareStatement("delete from seller where Id = ?");
+            st = conn.prepareStatement("delete from classe where Id = ?");
 
             st.setInt(1, id);
 
@@ -109,10 +108,10 @@ public class ClasseDaoJDBC implements ClasseDao {
         ResultSet rs = null;
         try{
             st = conn.prepareStatement("" +
-                    "select seller.*, department.Name as DepName " +
-                    "from seller inner join department " +
-                    "on seller.DepartmentId = department.Id " +
-                    "where seller.Id = ?");
+                    "select classe.*, raca.Nome as DepName " +
+                    "from classe inner join raca " +
+                    "on classe.Id = raca.Id " +
+                    "where classe.Id = ?");
 
             st.setInt(1, id);
             rs = st.executeQuery();
@@ -133,19 +132,19 @@ public class ClasseDaoJDBC implements ClasseDao {
 
     private Raca instantiateDepartment(ResultSet rs) throws SQLException {
         Raca dep = new Raca();
-        dep.setId(rs.getInt("RacaId"));
-        dep.setNome(rs.getString("RacaName"));
+        dep.setId(rs.getInt("Id"));
+        dep.setNome(rs.getString("Nome"));
         return dep;
     }
 
     private Classe instantiateSeller(ResultSet rs, Raca dep) throws SQLException{
         Classe obj = new Classe();
         obj.setId(rs.getInt("Id"));
-        obj.setNome(rs.getString("Name"));
+        obj.setNome(rs.getString("Nome"));
         obj.setforca(rs.getInt("Raca"));
         obj.setDestreza(rs.getInt("Destreza"));
         obj.setResistencia(rs.getInt("Resistencia"));
-        obj.setRaca(new Raca());
+
         return obj;
     }
     @Override
@@ -154,10 +153,10 @@ public class ClasseDaoJDBC implements ClasseDao {
         ResultSet rs = null;
         try{
             st = conn.prepareStatement("" +
-                    "select seller.*, department.Name as DepName " +
-                    "from seller inner join department " +
-                    "on seller.DepartmentId = department.Id " +
-                    "order by Name");
+                    "select classe.*, raca.Nome as DepName " +
+                    "from classe inner join raca " +
+                    "on classe.Id = raca.Id " +
+                    "order by Nome");
 
             rs = st.executeQuery();
 
@@ -166,11 +165,11 @@ public class ClasseDaoJDBC implements ClasseDao {
 
             while (rs.next()){
 
-                Raca dep = map.get(rs.getInt("DepartmentId"));
+                Raca dep = map.get(rs.getInt("Id"));
 
                 if (dep == null){
                     dep = instantiateDepartment(rs);
-                    map.put(rs.getInt("DepartmentId"), dep);
+                    map.put(rs.getInt("Id"), dep);
                 }
 
                 Classe obj = instantiateSeller(rs, dep);
@@ -191,11 +190,11 @@ public class ClasseDaoJDBC implements ClasseDao {
         ResultSet rs = null;
         try{
             st = conn.prepareStatement("" +
-                    "select seller.*, raca.Name as DepName " +
-                    "from seller inner join raca " +
-                    "on seller.DepartmentId = raca.Id " +
-                    "where DepartmentId = ? " +
-                    "order by Name");
+                    "select classe.*, raca.Nome as DepName " +
+                    "from classe inner join raca " +
+                    "on classe.Id = raca.Id " +
+                    "where id = ? " +
+                    "order by Nome");
 
             st.setInt(1, raca.getId());
 
@@ -206,11 +205,11 @@ public class ClasseDaoJDBC implements ClasseDao {
 
             while (rs.next()){
 
-                Raca dep = map.get(rs.getInt("DepartmentId"));
+                Raca dep = map.get(rs.getInt("Id"));
 
                 if (dep == null){
                     dep = instantiateDepartment(rs);
-                    map.put(rs.getInt("DepartmentId"), dep);
+                    map.put(rs.getInt("Id"), dep);
                 }
 
                 Classe obj = instantiateSeller(rs, dep);
