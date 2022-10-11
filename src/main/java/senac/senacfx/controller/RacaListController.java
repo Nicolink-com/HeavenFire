@@ -113,7 +113,7 @@ public class RacaListController implements Initializable, DataChangeListener {
             dialogStage.showAndWait();
 
         } catch (IOException e){
-            e.printStackTrace();
+
             Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
         }
     }

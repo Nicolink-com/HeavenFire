@@ -10,6 +10,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 
 import javafx.scene.layout.VBox;
+import org.jetbrains.annotations.NotNull;
 import senac.senacfx.application.Main;
 import senac.senacfx.gui.util.Alerts;
 import senac.senacfx.model.services.DepartmentService;
@@ -55,7 +56,7 @@ public class MainViewController implements Initializable {
 
     }
 
-    private synchronized <T> void loadView(String absoluteName, Consumer<T> initializingAction){
+    private synchronized <T> void loadView(String absoluteName, @NotNull Consumer<T> initializingAction){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
             VBox newVBox = loader.load();
@@ -72,7 +73,32 @@ public class MainViewController implements Initializable {
             initializingAction.accept(controller);
 
         }catch (IOException e){
+            e.printStackTrace();
             Alerts.showAlert("IO EXCEPTION", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
         }
+    }
+
+    public MenuItem getMenuItemSeller() {
+        return menuItemSeller;
+    }
+
+    public void setMenuItemSeller(MenuItem menuItemSeller) {
+        this.menuItemSeller = menuItemSeller;
+    }
+
+    public MenuItem getMenuItemDepartment() {
+        return menuItemDepartment;
+    }
+
+    public void setMenuItemDepartment(MenuItem menuItemDepartment) {
+        this.menuItemDepartment = menuItemDepartment;
+    }
+
+    public MenuItem getMenuItemAbout() {
+        return menuItemAbout;
+    }
+
+    public void setMenuItemAbout(MenuItem menuItemAbout) {
+        this.menuItemAbout = menuItemAbout;
     }
 }

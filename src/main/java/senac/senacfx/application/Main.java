@@ -29,7 +29,7 @@ public class Main extends Application {
             primaryStage.setTitle("HEAVENFIRE.COM");
             primaryStage.show();
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
     }
 
