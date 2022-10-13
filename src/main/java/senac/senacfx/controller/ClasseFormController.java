@@ -35,7 +35,7 @@ public class ClasseFormController implements Initializable {
     private TextField txtId;
 
     @FXML
-    private TextField txtName;
+    private TextField txtNome;
 
     @FXML
     private TextField txtforca;
@@ -51,16 +51,21 @@ public class ClasseFormController implements Initializable {
     @FXML
     private ComboBox<Raca> comboBoxDepartment;
     @FXML
-    private Label labelErrorName;
+    private Label labelErrorNome;
 
     @FXML
-    private Label labelErrorEmail;
+    private Label labelErrorForca;
 
     @FXML
-    private Label labelErrorBirthDate;
+    private Label labelErrorResistencia;
 
     @FXML
-    private Label labelErrorBaseSalary;
+    private Label labelErrorDestreza;
+    @FXML
+    private Label labelErrorHP;
+
+    @FXML
+    private Label labelErrorMagia;
 
     @FXML
     private Button btSave;
@@ -75,9 +80,7 @@ public class ClasseFormController implements Initializable {
 //        this.entity = entity;
 //    }
 
-    public void setServices(SellerService service, DepartmentService departmentService){
-        this.service = service;
-        this.departmentService = departmentService;
+    public void setServices(SellerService service ){ this.service = service;
     }
 
     public void subscribeDataChangeListener(DataChangeListener listener) {
@@ -119,15 +122,18 @@ public class ClasseFormController implements Initializable {
 
         obj.setId(Utils.tryParseToInt(txtId.getText()));
 
-        if (txtName.getText() == null || txtName.getText().trim().equals("")){
+        if (txtNome.getText() == null || txtNome.getText().trim().equals("")){
             exception.addError("Nome", "campo nao pode ser vazio");
         }
-        obj.setNome(txtName.getText());
+        obj.setNome(txtNome.getText());
 
         if (txtforca.getText() == null || txtforca.getText().trim().equals("")){
             exception.addError("Forca", "campo nao pode ser vazio");
         }
         obj.setforca(Integer.valueOf(txtforca.getText()));
+        if (txtResistencia.getText() == null || txtResistencia.getText().trim().equals("")){
+            exception.addError("Resistenci", "campo nao pode ser vazio");
+        }
 
         obj.setResistencia(Utils.tryParseToInt(txtResistencia.getText()));
 
@@ -135,15 +141,16 @@ public class ClasseFormController implements Initializable {
             exception.addError("Destreza", "campo nao pode ser vazio");
         }
         obj.setDestreza(Utils.tryParseToInt(txtDestreza.getText()));
+
         if (txtHP.getText() == null || txtHP.getText().trim().equals("")){
             exception.addError("HP", "campo nao pode ser vazio");
         }
-        obj.setDestreza(Utils.tryParseToInt(txtHP.getText()));
+        obj.setHP(Utils.tryParseToInt(txtHP.getText()));
+
         if (txtMagia.getText() == null || txtMagia.getText().trim().equals("")){
             exception.addError("Magia", "campo nao pode ser vazio");
         }
-        obj.setDestreza(Utils.tryParseToInt(txtMagia.getText()));
-
+        obj.setMagia(Utils.tryParseToInt(txtMagia.getText()));
 
 
         if (exception.getErrors().size() > 0){
@@ -166,7 +173,7 @@ public class ClasseFormController implements Initializable {
 
     private void initializeNodes() {
         Constraints.setTextFieldInteger(txtId);
-        Constraints.setTextFieldMaxLength(txtName, 70);
+        Constraints.setTextFieldMaxLength(txtNome, 70);
         Constraints.setTextFieldInteger(txtDestreza);
         Constraints.setTextFieldInteger(txtforca);
         Constraints.setTextFieldInteger(txtResistencia);
@@ -184,7 +191,7 @@ public class ClasseFormController implements Initializable {
         }
 
         txtId.setText(String.valueOf(entity.getId()));
-        txtName.setText(entity.getNome());
+        txtNome.setText(entity.getNome());
         txtforca.setText(String.valueOf((entity.getforca())));
         Locale.setDefault(Locale.US);
 
@@ -204,11 +211,13 @@ public class ClasseFormController implements Initializable {
     private void setErrorMessages(Map<String, String> errors){
         Set<String> fields = errors.keySet();
 
-        labelErrorName.setText((fields.contains("nome") ? errors.get("nome") : ""));
-        labelErrorEmail.setText((fields.contains("forca") ? errors.get("forca") : ""));
-        labelErrorBirthDate.setText((fields.contains("Resistencia") ? errors.get("Resistencia") : ""));
-        labelErrorBaseSalary.setText((fields.contains("Destreza") ? errors.get("Destreza") : ""));
-        labelErrorName.getStyleClass().add("button");
+        labelErrorNome.setText((fields.contains("nome") ? errors.get("nome") : ""));
+        labelErrorForca.setText((fields.contains("forca") ? errors.get("forca") : ""));
+        labelErrorResistencia.setText((fields.contains("Resistencia") ? errors.get("Resistencia") : ""));
+        labelErrorDestreza.setText((fields.contains("Destreza") ? errors.get("Destreza") : ""));
+        labelErrorHP.setText((fields.contains("HP") ? errors.get("HP") : ""));
+        labelErrorMagia.setText((fields.contains("Magia") ? errors.get("Magia") : ""));
+        labelErrorNome.getStyleClass().add("button");
 
     }
 
