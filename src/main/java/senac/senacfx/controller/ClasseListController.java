@@ -118,9 +118,9 @@ public class ClasseListController implements Initializable, DataChangeListener {
             Pane pane = loader.load();
 
             ClasseFormController controller = loader.getController();
-            controller.setSeller(obj);
+//            controller.setSeller(obj);
             controller.setServices(new SellerService(), new DepartmentService());
-            controller.loadAssociatedObjects();
+//            controller.loadAssociatedObjects();
             controller.subscribeDataChangeListener(this);
             controller.updateFormData();
 

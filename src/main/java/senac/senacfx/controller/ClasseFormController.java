@@ -45,6 +45,8 @@ public class ClasseFormController implements Initializable {
 
     @FXML
     private TextField txtDestreza;
+    private TextField txtHP;
+    private TextField txtMagia;
 
     @FXML
     private ComboBox<Raca> comboBoxDepartment;
@@ -66,12 +68,12 @@ public class ClasseFormController implements Initializable {
     @FXML
     private Button btCancel;
 
-    private ObservableList<Raca> obsList;
+//    private ObservableList<Raca> obsList;
 
-    //Contolador agora tem uma instancia do departamento
-    public void setSeller(Classe entity){
-        this.entity = entity;
-    }
+//    //Contolador agora tem uma instancia do departamento
+//    public void setSeller(Classe entity){
+//        this.entity = entity;
+//    }
 
     public void setServices(SellerService service, DepartmentService departmentService){
         this.service = service;
@@ -118,12 +120,12 @@ public class ClasseFormController implements Initializable {
         obj.setId(Utils.tryParseToInt(txtId.getText()));
 
         if (txtName.getText() == null || txtName.getText().trim().equals("")){
-            exception.addError("name", "campo nao pode ser vazio");
+            exception.addError("Nome", "campo nao pode ser vazio");
         }
         obj.setNome(txtName.getText());
 
         if (txtforca.getText() == null || txtforca.getText().trim().equals("")){
-            exception.addError("email", "campo nao pode ser vazio");
+            exception.addError("Forca", "campo nao pode ser vazio");
         }
         obj.setforca(Integer.valueOf(txtforca.getText()));
 
@@ -133,6 +135,14 @@ public class ClasseFormController implements Initializable {
             exception.addError("Destreza", "campo nao pode ser vazio");
         }
         obj.setDestreza(Utils.tryParseToInt(txtDestreza.getText()));
+        if (txtHP.getText() == null || txtHP.getText().trim().equals("")){
+            exception.addError("HP", "campo nao pode ser vazio");
+        }
+        obj.setDestreza(Utils.tryParseToInt(txtHP.getText()));
+        if (txtMagia.getText() == null || txtMagia.getText().trim().equals("")){
+            exception.addError("Magia", "campo nao pode ser vazio");
+        }
+        obj.setDestreza(Utils.tryParseToInt(txtMagia.getText()));
 
 
 
@@ -157,9 +167,11 @@ public class ClasseFormController implements Initializable {
     private void initializeNodes() {
         Constraints.setTextFieldInteger(txtId);
         Constraints.setTextFieldMaxLength(txtName, 70);
-        Constraints.setTextFieldDouble(txtDestreza);
-        Constraints.setTextFieldMaxLength(txtforca, 60);
+        Constraints.setTextFieldInteger(txtDestreza);
+        Constraints.setTextFieldInteger(txtforca);
         Constraints.setTextFieldInteger(txtResistencia);
+        Constraints.setTextFieldInteger(txtHP);
+        Constraints.setTextFieldInteger(txtMagia);
 
         initializeComboBoxDepartment();
 
@@ -178,16 +190,16 @@ public class ClasseFormController implements Initializable {
 
     }
 
-    public void loadAssociatedObjects(){
-
-        if (departmentService == null){
-            throw new IllegalStateException("DepartmentService was null");
-        }
-
-        List<Raca> list = departmentService.findAll();
-        obsList = FXCollections.observableArrayList(list);
-        comboBoxDepartment.setItems(obsList);
-    }
+//    public void loadAssociatedObjects(){
+//
+//        if (departmentService == null){
+//            throw new IllegalStateException("DepartmentService was null");
+//        }
+//
+//        List<Raca> list = departmentService.findAll();
+//        obsList = FXCollections.observableArrayList(list);
+//        comboBoxDepartment.setItems(obsList);
+//    }
 
     private void setErrorMessages(Map<String, String> errors){
         Set<String> fields = errors.keySet();

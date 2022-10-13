@@ -15,5 +15,5 @@ public interface ClasseDao {
     List<Classe> findAll();
 
 
-    List<Classe> findByDepartment(Raca raca);
+
 }

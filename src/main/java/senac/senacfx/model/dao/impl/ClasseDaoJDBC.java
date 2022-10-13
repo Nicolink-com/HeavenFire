@@ -184,43 +184,43 @@ public class ClasseDaoJDBC implements ClasseDao {
         }
     }
 
-    @Override
-    public List<Classe> findByDepartment(Raca raca) {
-        PreparedStatement st = null;
-        ResultSet rs = null;
-        try{
-            st = conn.prepareStatement("" +
-                    "select classe.*, raca.Nome as DepName " +
-                    "from classe inner join raca " +
-                    "on classe.Id = raca.Id " +
-                    "where id = ? " +
-                    "order by Nome");
-
-            st.setInt(1, raca.getId());
-
-            rs = st.executeQuery();
-
-            List<Classe> list = new ArrayList<>();
-            Map<Integer, Raca> map = new HashMap<>();
-
-            while (rs.next()){
-
-                Raca dep = map.get(rs.getInt("Id"));
-
-                if (dep == null){
-                    dep = instantiateDepartment(rs);
-                    map.put(rs.getInt("Id"), dep);
-                }
-
-                Classe obj = instantiateSeller(rs, dep);
-                list.add(obj);
-            }
-            return list;
-        } catch (SQLException e){
-            throw new DbException(e.getMessage());
-        } finally {
-            DB.closeStatement(st);
-            DB.closeResultSet(rs);
-        }
-    }
+//    @Override
+//    public List<Classe> findByDepartment(Raca raca) {
+//        PreparedStatement st = null;
+//        ResultSet rs = null;
+//        try{
+//            st = conn.prepareStatement("" +
+//                    "select classe.*, raca.Nome as DepName " +
+//                    "from classe inner join raca " +
+//                    "on classe.Id = raca.Id " +
+//                    "where id = ? " +
+//                    "order by Nome");
+//
+//            st.setInt(1, raca.getId());
+//
+//            rs = st.executeQuery();
+//
+//            List<Classe> list = new ArrayList<>();
+//            Map<Integer, Raca> map = new HashMap<>();
+//
+//            while (rs.next()){
+//
+//                Raca dep = map.get(rs.getInt("Id"));
+//
+//                if (dep == null){
+//                    dep = instantiateDepartment(rs);
+//                    map.put(rs.getInt("Id"), dep);
+//                }
+//
+//                Classe obj = instantiateSeller(rs, dep);
+//                list.add(obj);
+//            }
+//            return list;
+//        } catch (SQLException e){
+//            throw new DbException(e.getMessage());
+//        } finally {
+//            DB.closeStatement(st);
+//            DB.closeResultSet(rs);
+//        }
+//    }
 }
