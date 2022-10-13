@@ -1,6 +1,5 @@
 package senac.senacfx.application;
 
-import com.sun.javafx.scene.control.skin.Utils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
