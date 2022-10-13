@@ -88,7 +88,7 @@ public class ClasseListController implements Initializable, DataChangeListener {
 
     private void initializeNodes() {
         tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tableColumnName.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tableColumnforca.setCellValueFactory(new PropertyValueFactory<>("forca"));
         tableColumnResistencia.setCellValueFactory(new PropertyValueFactory<>("Resistencia"));
         tableColumnDestreza.setCellValueFactory(new PropertyValueFactory<>("Destreza"));
@@ -118,9 +118,9 @@ public class ClasseListController implements Initializable, DataChangeListener {
             Pane pane = loader.load();
 
             ClasseFormController controller = loader.getController();
-//            controller.setSeller(obj);
-//            controller.setServices(new SellerService(), new DepartmentService());
-//            controller.loadAssociatedObjects();
+            controller.setSeller(obj);
+            controller.setServices(new SellerService());
+            controller.loadAssociatedObjects();
             controller.subscribeDataChangeListener(this);
             controller.updateFormData();
 
@@ -133,6 +133,7 @@ public class ClasseListController implements Initializable, DataChangeListener {
             dialogStage.showAndWait();
 
         } catch (IOException e){
+            e.printStackTrace();
 
             Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
         }
@@ -191,6 +192,7 @@ public class ClasseListController implements Initializable, DataChangeListener {
                 service.remove(obj);
                 updateTableView();
             } catch (DbException e){
+
                 Alerts.showAlert("Error removing object", null, e.getMessage(), Alert.AlertType.ERROR);
             }
         }

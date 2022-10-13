@@ -24,9 +24,9 @@ public class ClasseDaoJDBC implements ClasseDao {
         PreparedStatement st = null;
         try{
             st = conn.prepareStatement(
-                    "insert into raca " +
-                            "(Nome, Forca, Resistencia, Destreza, Hp, Magia, Id) " +
-                            "values (?, ?, ?, ?, ?,?,?)",
+                    "insert into classe " +
+                            "(Nome, Forca, Resistencia, Destreza, Hp, Magia) " +
+                            "values (?, ?, ?, ?, ?,?)",
                     Statement.RETURN_GENERATED_KEYS);
 
             st.setString(1, obj.getNome());
@@ -141,9 +141,12 @@ public class ClasseDaoJDBC implements ClasseDao {
         Classe obj = new Classe();
         obj.setId(rs.getInt("Id"));
         obj.setNome(rs.getString("Nome"));
-        obj.setforca(rs.getInt("Raca"));
-        obj.setDestreza(rs.getInt("Destreza"));
+        obj.setforca(rs.getInt("Forca"));
         obj.setResistencia(rs.getInt("Resistencia"));
+        obj.setDestreza(rs.getInt("Destreza"));
+        obj.setResistencia(rs.getInt("HP"));
+        obj.setResistencia(rs.getInt("Magia"));
+
 
         return obj;
     }

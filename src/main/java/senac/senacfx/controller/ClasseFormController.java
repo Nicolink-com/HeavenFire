@@ -27,8 +27,6 @@ public class ClasseFormController implements Initializable {
 
     private SellerService service;
 
-    private DepartmentService departmentService;
-
     private List<DataChangeListener> dataChangeListeners = new ArrayList<>();
 
     @FXML
@@ -45,11 +43,11 @@ public class ClasseFormController implements Initializable {
 
     @FXML
     private TextField txtDestreza;
+    @FXML
     private TextField txtHP;
+    @FXML
     private TextField txtMagia;
 
-    @FXML
-    private ComboBox<Raca> comboBoxDepartment;
     @FXML
     private Label labelErrorNome;
 
@@ -72,6 +70,9 @@ public class ClasseFormController implements Initializable {
 
     @FXML
     private Button btCancel;
+
+    public ClasseFormController() {
+    }
 
 //    private ObservableList<Raca> obsList;
 
@@ -132,7 +133,7 @@ public class ClasseFormController implements Initializable {
         }
         obj.setforca(Integer.valueOf(txtforca.getText()));
         if (txtResistencia.getText() == null || txtResistencia.getText().trim().equals("")){
-            exception.addError("Resistenci", "campo nao pode ser vazio");
+            exception.addError("Resistencia", "campo nao pode ser vazio");
         }
 
         obj.setResistencia(Utils.tryParseToInt(txtResistencia.getText()));
@@ -167,20 +168,18 @@ public class ClasseFormController implements Initializable {
 
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeNodes();
-    }
+    public void initialize(URL url, ResourceBundle resourceBundle) { initializeNodes(); }
 
     private void initializeNodes() {
         Constraints.setTextFieldInteger(txtId);
-        Constraints.setTextFieldMaxLength(txtNome, 70);
+        Constraints.setTextFieldMaxLength(txtNome, 50);
         Constraints.setTextFieldInteger(txtDestreza);
         Constraints.setTextFieldInteger(txtforca);
         Constraints.setTextFieldInteger(txtResistencia);
         Constraints.setTextFieldInteger(txtHP);
         Constraints.setTextFieldInteger(txtMagia);
 
-        initializeComboBoxDepartment();
+
 
     }
 
@@ -193,6 +192,10 @@ public class ClasseFormController implements Initializable {
         txtId.setText(String.valueOf(entity.getId()));
         txtNome.setText(entity.getNome());
         txtforca.setText(String.valueOf((entity.getforca())));
+        txtResistencia.setText(String.valueOf((entity.getResistencia())));
+        txtDestreza.setText(String.valueOf((entity.getDestreza())));
+        txtHP.setText(String.valueOf((entity.getHP())));
+        txtMagia.setText(String.valueOf((entity.getMagia())));
         Locale.setDefault(Locale.US);
 
     }
@@ -221,16 +224,11 @@ public class ClasseFormController implements Initializable {
 
     }
 
-    private void initializeComboBoxDepartment() {
-        Callback<ListView<Raca>, ListCell<Raca>> factory = lv -> new ListCell<Raca>() {
-            @Override
-            protected void updateItem(Raca item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty ? "" : item.getNome());
-            }
-        };
-        comboBoxDepartment.setCellFactory(factory);
-        comboBoxDepartment.setButtonCell(factory.call(null));
+
+
+    public void setSeller(Classe obj) {
     }
 
+    public void loadAssociatedObjects() {
+    }
 }
