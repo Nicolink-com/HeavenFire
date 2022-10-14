@@ -36,7 +36,7 @@ public class ClasseFormController implements Initializable {
     private TextField txtNome;
 
     @FXML
-    private TextField txtforca;
+    public TextField txtforca;
 
     @FXML
     private TextField txtResistencia;
@@ -52,7 +52,7 @@ public class ClasseFormController implements Initializable {
     private Label labelErrorNome;
 
     @FXML
-    private Label labelErrorForca;
+    public Label labelErrorForca;
 
     @FXML
     private Label labelErrorResistencia;
@@ -128,10 +128,9 @@ public class ClasseFormController implements Initializable {
         }
         obj.setNome(txtNome.getText());
 
-        if (txtforca.getText() == null || txtforca.getText().trim().equals("")){
-            exception.addError("Forca", "campo nao pode ser vazio");
-        }
-        obj.setforca(Integer.valueOf(txtforca.getText()));
+
+        obj.setforca(Utils.tryParseToInt(txtforca.getText()));
+
         if (txtResistencia.getText() == null || txtResistencia.getText().trim().equals("")){
             exception.addError("Resistencia", "campo nao pode ser vazio");
         }

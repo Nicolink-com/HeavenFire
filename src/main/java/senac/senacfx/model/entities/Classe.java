@@ -7,7 +7,7 @@ public class Classe implements Serializable {
     private static final long serialVersionUId = 1L;
     private Integer Id;
     private String Nome;
-    private Integer forca;
+    public Integer forca;
     
     private Integer Resistencia;
     private Integer Destreza;
@@ -27,7 +27,6 @@ public class Classe implements Serializable {
         this.forca = forca;
         this.Resistencia = Resistencia;
         this.Destreza = Destreza;
-
         this.HP = HP;
         this.Magia = Magia;
     }
@@ -124,7 +123,8 @@ public class Classe implements Serializable {
                 ", forca='" + forca + '\'' +
                 ", Resistencia=" + Resistencia +
                 ", Destreza=" + Destreza +
-                ", raca=" +
+                ", HP=" + HP +
+                "Magia=" + Magia +
                 '}';
     }
 }

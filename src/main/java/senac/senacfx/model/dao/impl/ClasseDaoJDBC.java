@@ -68,9 +68,8 @@ public class ClasseDaoJDBC implements ClasseDao {
             st.setInt(2, obj.getforca());
             st.setInt(3, obj.getResistencia());
             st.setInt(4, obj.getDestreza());
-
-            st.setInt(6, obj.getHP());
-            st.setInt(7,obj.getMagia());
+            st.setInt(5, obj.getHP());
+            st.setInt(6,obj.getMagia());
 
             st.executeUpdate();
 
@@ -92,7 +91,7 @@ public class ClasseDaoJDBC implements ClasseDao {
             int rowsAffected = st.executeUpdate();
 
             if (rowsAffected == 0){
-                throw new DbException("Vendedor inexistente!");
+                throw new DbException("Classe inexistente!");
             }
 
         } catch (SQLException e){
@@ -137,15 +136,15 @@ public class ClasseDaoJDBC implements ClasseDao {
         return dep;
     }
 
-    private Classe instantiateSeller(ResultSet rs, Raca dep) throws SQLException{
+    public Classe instantiateSeller(ResultSet rs, Raca dep) throws SQLException{
         Classe obj = new Classe();
         obj.setId(rs.getInt("Id"));
         obj.setNome(rs.getString("Nome"));
         obj.setforca(rs.getInt("Forca"));
         obj.setResistencia(rs.getInt("Resistencia"));
         obj.setDestreza(rs.getInt("Destreza"));
-        obj.setResistencia(rs.getInt("HP"));
-        obj.setResistencia(rs.getInt("Magia"));
+        obj.setHP(rs.getInt("HP"));
+        obj.setMagia(rs.getInt("Magia"));
 
 
         return obj;

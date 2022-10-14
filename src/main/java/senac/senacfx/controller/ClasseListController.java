@@ -43,7 +43,7 @@ public class ClasseListController implements Initializable, DataChangeListener {
     private TableColumn<Classe, String> tableColumnName;
 
     @FXML
-    private TableColumn<Classe, Integer> tableColumnforca;
+    public TableColumn<Classe, Integer> tableColumnforca;
 
     @FXML
     private TableColumn<Classe, Integer> tableColumnResistencia;
