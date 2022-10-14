@@ -33,8 +33,8 @@ public class ClasseDaoJDBC implements ClasseDao {
             st.setInt(2, obj.getforca());
             st.setInt(3,  obj.getResistencia());
             st.setInt(4, obj.getDestreza());
-            st.setInt(6,obj.getHP());
-            st.setInt(7,obj.getMagia());
+            st.setInt(5,obj.getHP());
+            st.setInt(6,obj.getMagia());
 
             int rowsAffected = st.executeUpdate();
 
@@ -62,7 +62,7 @@ public class ClasseDaoJDBC implements ClasseDao {
         try{
             st = conn.prepareStatement(
                     "update Calsse " +
-                            "set Name = ?, Forca = ?, Resistencia = ?, Destreza = ?, HP = ?, Magia = ?");
+                            "set Name = ?, forca = ?, Resistencia = ?, Destreza = ?, HP = ?, Magia = ?");
 
             st.setString(1, obj.getNome());
             st.setInt(2, obj.getforca());
@@ -140,7 +140,7 @@ public class ClasseDaoJDBC implements ClasseDao {
         Classe obj = new Classe();
         obj.setId(rs.getInt("Id"));
         obj.setNome(rs.getString("Nome"));
-        obj.setforca(rs.getInt("Forca"));
+        obj.setforca(rs.getInt("forca"));
         obj.setResistencia(rs.getInt("Resistencia"));
         obj.setDestreza(rs.getInt("Destreza"));
         obj.setHP(rs.getInt("HP"));

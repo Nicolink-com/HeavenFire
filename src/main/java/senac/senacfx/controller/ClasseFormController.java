@@ -1,21 +1,16 @@
 package senac.senacfx.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.util.Callback;
 import senac.senacfx.db.DbException;
 import senac.senacfx.gui.listeners.DataChangeListener;
 import senac.senacfx.gui.util.Alerts;
 import senac.senacfx.gui.util.Constraints;
 import senac.senacfx.gui.util.Utils;
 import senac.senacfx.model.entities.Classe;
-import senac.senacfx.model.entities.Raca;
 import senac.senacfx.model.exceptions.ValidationException;
-import senac.senacfx.model.services.DepartmentService;
 import senac.senacfx.model.services.SellerService;
 
 import java.net.URL;
@@ -76,10 +71,11 @@ public class ClasseFormController implements Initializable {
 
 //    private ObservableList<Raca> obsList;
 
-//    //Contolador agora tem uma instancia do departamento
-//    public void setSeller(Classe entity){
-//        this.entity = entity;
-//    }
+    //Contolador agora tem uma instancia do departamento
+    public void setClasse(Classe entity){
+        this.entity = entity;
+    }
+
 
     public void setServices(SellerService service ){ this.service = service;
     }
@@ -123,33 +119,16 @@ public class ClasseFormController implements Initializable {
 
         obj.setId(Utils.tryParseToInt(txtId.getText()));
 
-        if (txtNome.getText() == null || txtNome.getText().trim().equals("")){
-            exception.addError("Nome", "campo nao pode ser vazio");
-        }
         obj.setNome(txtNome.getText());
 
-
-        obj.setforca(Utils.tryParseToInt(txtforca.getText()));
-
-        if (txtResistencia.getText() == null || txtResistencia.getText().trim().equals("")){
-            exception.addError("Resistencia", "campo nao pode ser vazio");
-        }
+        obj.setforca(10);
 
         obj.setResistencia(Utils.tryParseToInt(txtResistencia.getText()));
 
-        if (txtDestreza.getText() == null || txtDestreza.getText().trim().equals("")){
-            exception.addError("Destreza", "campo nao pode ser vazio");
-        }
         obj.setDestreza(Utils.tryParseToInt(txtDestreza.getText()));
 
-        if (txtHP.getText() == null || txtHP.getText().trim().equals("")){
-            exception.addError("HP", "campo nao pode ser vazio");
-        }
         obj.setHP(Utils.tryParseToInt(txtHP.getText()));
 
-        if (txtMagia.getText() == null || txtMagia.getText().trim().equals("")){
-            exception.addError("Magia", "campo nao pode ser vazio");
-        }
         obj.setMagia(Utils.tryParseToInt(txtMagia.getText()));
 
 
@@ -184,8 +163,15 @@ public class ClasseFormController implements Initializable {
 
     public void updateFormData() {
 
+        Random aleatorio = new Random();
         if (entity == null) {
-            throw new IllegalStateException("Entidade nula");
+            entity.setId(aleatorio.nextInt(100));
+            entity.setNome("teste");
+            entity.setResistencia(12);
+            entity.setMagia(33);
+            entity.setDestreza(4);
+            entity.setforca(1);
+            entity.setHP(88);
         }
 
         txtId.setText(String.valueOf(entity.getId()));
@@ -225,8 +211,6 @@ public class ClasseFormController implements Initializable {
 
 
 
-    public void setSeller(Classe obj) {
-    }
 
     public void loadAssociatedObjects() {
     }
